@@ -11,14 +11,11 @@
  * file per style scope.
  *
  *= require_self
- *= require foundation.min
  *= require normalize
- *= require font-awesome.min
- *= require foundation_and_overrides
  *= require simple_form
  */
 
- .tl_name {
+  .tl_name {
   width: 225px;
   display: block;
   position: absolute;
@@ -112,4 +109,49 @@ li.well {
 
 label {
   padding-right: 4px;
+}
+
+#flash {
+  color: red;
+}
+
+.nav {
+  height: 100px;
+  line-height: 100px;
+}
+
+.nav-wrapper {
+  opacity: 1;
+  color: white;
+}
+
+.logo img {
+  height: 10em;
+  display: block;
+}
+
+.link a {
+  color: #679436
+}
+
+.link text {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+
+}
+
+.heading {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  color: #00695C;
+}
+
+.text {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 100;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+  color: #696969;
 }
