@@ -14,15 +14,15 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(document).ready(function() {
-  $('.dropdown-button').dropdown();
-  $('select').material_select();
+// $(document).ready(function() {
+//   $('.dropdown-button').dropdown();
+//   $('select').material_select();
 
-  // Initialize collapse button
-  $(".button-collapse").sideNav();
-  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-  //$('.collapsible').collapsible();
+//   // Initialize collapse button
+//   $(".button-collapse").sideNav();
+//   // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+//   //$('.collapsible').collapsible();
         
-});
+// });
 
 

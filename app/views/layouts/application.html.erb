@@ -24,10 +24,15 @@
   </head>
 
   <body>
-    <div id="title_area">
-      <%= link_to image_tag('chess_store_title.png'), home_path %>
+    
+  <div class="logo">
+    <p align="center"><%= link_to image_tag('logo.png'), home_path %>
+    </p>
+  </div>
+
+    <div class="sidebar">
+       <%= render partial: 'partials/sidebar' %>
     </div>
-    <%= render :partial => "partials/nav" %>
     
     <div class="row">
       <div class="small-12 columns" id="main_content">

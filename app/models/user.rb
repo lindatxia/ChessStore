@@ -53,5 +53,10 @@ class User < ActiveRecord::Base
     self.phone = phone       # reset self.phone to new string
   end
 
+  # login by email address
+  def self.authenticate(email, password)
+    find_by_email(email).try(:authenticate, password)
+  end
+
 
 end

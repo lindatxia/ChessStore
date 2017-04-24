@@ -11,11 +11,10 @@
  * file per style scope.
  *
  *= require_self
- *= require normalize
- *= require simple_form
+
  */
 
-  .tl_name {
+.tl_name {
   width: 225px;
   display: block;
   position: absolute;
@@ -55,9 +54,6 @@
   font-weight: normal;
 }
 
-#title_area {
-  background-color: #ffffff;
-}
 
 #main_content {
   margin-top: 10px;
@@ -111,41 +107,9 @@ label {
   padding-right: 4px;
 }
 
-#flash {
-  color: red;
-}
-
-.nav {
-  height: 100px;
-  line-height: 100px;
-}
-
-.nav-wrapper {
-  opacity: 1;
-  color: white;
-}
-
-.logo img {
-  height: 10em;
-  display: block;
-}
-
-.link a {
-  color: #679436
-}
-
-.link text {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 400;
-  font-size: 17px;
-  letter-spacing: 0.3px;
-
-}
-
-.heading {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 600;
-  color: #00695C;
+.logo img { 
+  height: 10em; 
+  width: auto;
 }
 
 .text {
@@ -153,5 +117,12 @@ label {
   font-weight: 100;
   font-size: 17px;
   letter-spacing: 0.3px;
+  color: #696969;
+}
+
+.nav-text {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 100;
+  font-size: 18px;
   color: #696969;
 }

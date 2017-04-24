@@ -1,4 +1,7 @@
 class ItemPricesController < ApplicationController
+
+  before_action :check_login, except: [:index, :show]
+  
   def index
     @active_items = Item.active.alphabetical.to_a
   end
