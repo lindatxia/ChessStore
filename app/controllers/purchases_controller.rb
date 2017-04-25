@@ -8,6 +8,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    
     @purchase = Purchase.new(purchase_params)
     @purchase.date = Date.current
     
