@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 	end
 
 	def edit 
-		@user = User.current_user
+		# @user = User.current_user
 	end
 
 	def create 

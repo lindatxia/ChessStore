@@ -34,9 +34,6 @@
     <%= f.label :role %><br />
     <%= f.select :role, User::ROLES, :prompt => "Select ..." %>
   </p>
-	<p>
-    <%= f.label :band_id %><br />
-    <%= f.collection_select :band_id, Band.all, :id, :name, :prompt => "Choose..." %>
-  </p>
+	
   <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>
 <% end %>
