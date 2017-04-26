@@ -8,6 +8,13 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def show 
+	end
+
+	def index
+		@users = User.alphabetical.paginate(:page => params[:page]).per_page(7)
+	end
+
 	def edit 
 		# @user = User.current_user
 	end
@@ -23,7 +30,6 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		@user = User.current_user
 		if @user.update_attributes(user_params)
 			redirect_to(@user, :notice => 'User was successfully updated.')
 		else
