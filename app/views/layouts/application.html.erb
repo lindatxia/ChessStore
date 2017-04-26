@@ -25,15 +25,21 @@
 
   <body>
     
-  <div class="logo">
-    <p align="center"><%= link_to image_tag('logo.png'), home_path %>
-    </p>
-  </div>
+    <div class="logo">
+      <p align="center"><%= link_to image_tag('logo.png'), home_path %>
+      </p>
+    </div>
 
-    <div class="sidebar">
+    <div class="login">
+      <p align="right">
+      <%= render partial: 'partials/login' %>
+      </p>
+    </div>
+
+    <!-- <div class="sidebar">
        <%= render partial: 'partials/sidebar' %>
     </div>
-    
+     -->
     <div class="row">
       <div class="small-12 columns" id="main_content">
         <%= render :partial => "partials/flash" %>

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :check_login, except: [:index, :show] # Is this right? Should I add more?
 
   def index
     # get info on active items for the big three...
