@@ -51,8 +51,53 @@ class Ability
 
 			can :read, Order
 
+
+		elsif user.role? :shipper
+
+			# 1. Can read their own personal information in the system
+			can :show, User do |u|
+				u.id == user.id
+			end
+
+			# 2. Can read information related to orders that need to be shipped 
+			can :read, Order
+
+			# 3. Can read information about items
+			can :read, Item
+
+		elsif user.role? :customer
+
+			# 1. Can read their own personal information in the system.
+
+			can :read, User do |u| 
+				u.id == user.id
+			end
+
+			# 2. Can place new orders and cancel unshipped orders (??? how to do this part ???)
+
+			can :create, Order
+
+			# 3. Can read info about items, but just not inventory or price history
+
+			can :read, Item
+
+			can :read, Order 
+
+			can :read, OrderItem
+
+			can :update, School
+
+		else 
+
+			can :read, Item
+
+			can :create, User 
+
+			can :create, User
+
 		end
 
-	end
+	
+
 
 end
