@@ -1,5 +1,5 @@
 class ItemPricesController < ApplicationController
-
+  authorize_resource
   before_action :check_login, except: [:index, :show]
   
   def index

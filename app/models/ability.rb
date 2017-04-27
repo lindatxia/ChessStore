@@ -30,6 +30,7 @@ class Ability
 			can :create, Item 
 			can :read, Item
 			can :update, Item
+			can :destroy, Item
 
 			# 4. Can read full price history for a particular item.
 			can :read, ItemPrice
