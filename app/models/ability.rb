@@ -78,6 +78,8 @@ class Ability
 
 			can :create, Order
 
+			can :destroy, Order
+
 			# 3. Can read info about items, but just not inventory or price history
 
 			can :read, Item
