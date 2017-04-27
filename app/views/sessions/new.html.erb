@@ -1,7 +1,8 @@
-<h3>Log In</h3>
+<div class="container"> 
+<h5 class="heading">Log In</h5>
 
 <%= form_tag sessions_path do %>
-
+  
 	<div class="control-group">
     <%= label_tag :email %>
     <div class="controls">
@@ -16,5 +17,7 @@
     </div>
   </div>
 
+
   <div class="actions"><%= submit_tag "Log In" %></div>
+  </div>
 <% end %>
