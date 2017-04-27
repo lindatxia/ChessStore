@@ -1,5 +1,9 @@
+<div class="container">
+
 <%= simple_form_for @user do |f| %>
 	<% if @user.errors.any? %>
+
+
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -9,7 +13,9 @@
       <% end %>
       </ul>
     </div>
+
   <% end %>
+
 	<p>
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
@@ -31,6 +37,7 @@
     <%= f.password_field :password_confirmation %>
   </p>
 	<p>
+
   <div class="field" id = "role">
     <%= f.input(:role, as: :select, collection: User::ROLES)%>
   </div>
@@ -39,3 +46,4 @@
   <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>
 
 <% end %>
+</div>
