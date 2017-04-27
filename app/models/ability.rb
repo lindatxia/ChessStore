@@ -40,16 +40,13 @@ class Ability
 
 			# 5. Can adjust the inventory levels for an item by adding purchases to the system.
 			can :create, Purchase
-			# can [:purchase], Item
 
 			# 7. Can read information about customers, schools and orders in the system
 
 			can :read, User do |u|
 				u.role?(:customer)
 			end
-
 			can :read, School
-
 			can :read, Order
 
 
@@ -69,34 +66,32 @@ class Ability
 		elsif user.role? :customer
 
 			# 1. Can read their own personal information in the system.
-
 			can :read, User do |u| 
 				u.id == user.id
 			end
 
-			# 2. Can place new orders and cancel unshipped orders (??? how to do this part ???)
-
+			# 2. Can place new orders and cancel unshipped orders
 			can :create, Order
-
 			can :destroy, Order
 
 			# 3. Can read info about items, but just not inventory or price history
-
 			can :read, Item
 
-			can :read, Order 
+			# 4. Can seee a list of their past orders
+			can :read, Order do |o| 
+				o.user_id = user.id
+			end
 
-			can :read, OrderItem
+			# 5. Can add their schools to the database
+			can :create, School
 
-			can :update, School
-
+		# These are guests
 		else 
 
 			can :read, Item
-
 			can :create, User 
 
-			can :create, User
+			# 2. Can add schools to the database
 
 		end
 
