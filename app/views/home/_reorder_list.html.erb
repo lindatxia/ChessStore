@@ -1,24 +1,32 @@
-<h5>Reorder List</h5>
+<div class="row">
+  <div class="col s2">
+  </div>
+  <div class="col s10">
 
-<% unless @items_to_reorder.nil? || @items_to_reorder.empty? %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="250">Name</th>
-        <th width="125">Inventory</th>
-        <th width="125">Reorder Level</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @items_to_reorder.each do |item| %>
-        <tr>
-          <td><%= link_to item.name, item_path(item) %></td>
-          <td><%= item.inventory_level %></td>
-          <td><%= item.reorder_level %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>There are no items that need to be reorder at this time.</p>
-<% end %>
+    <h4 class="heading">Reorder List</h4>
+
+    <% unless @items_to_reorder.nil? || @items_to_reorder.empty? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th width="250" class="table-heading" >Name</th>
+            <th width="125" class="table-heading" >Inventory</th>
+            <th width="125" class="table-heading" >Reorder Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items_to_reorder.each do |item| %>
+            <tr>
+              <td class="link text"><%= link_to item.name, item_path(item) %></td>
+              <td class="text"><%= item.inventory_level %></td>
+              <td class="text"><%= item.reorder_level %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="text">There are no items that need to be reorder at this time.</p>
+    <% end %>
+
+  </div>
+</div>
