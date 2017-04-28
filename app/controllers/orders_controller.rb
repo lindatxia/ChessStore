@@ -33,15 +33,18 @@ class OrdersController < ApplicationController
 	end
 
 	def add_to_cart
-		add_item_to_cart(params[:item_id], 1)
+		add_item_to_cart(params[:item_id])
+		redirect_to orders_path
 	end
 
 	def remove_from_cart
-		remove_item_from_cart(params[:item_id], 1)
+		remove_item_from_cart(params[:item_id])
+		redirect_to orders_path
 	end
 
 	def destroy 
 		@order.destroy
+		redirect_to orders_path, notice: "Successfully removed #{@order.id} from the system."
 	end
 
 	private 

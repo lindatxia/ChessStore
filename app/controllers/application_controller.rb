@@ -6,13 +6,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :count_items_in_cart
 
-
+  private
   def count_items_in_cart
     @cart_count = get_list_of_items_in_cart.size
   end
 
-
-  private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
