@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
 	include ChessStoreHelpers::Cart
 
+	before_action :set_user, only: [:show, :destroy]
+	before_action :check_login, only: [:new, :create]
+
 	def index 
 		if current_user.role?(:customer)
 			@orders = current_user.orders.chronological.to_a
@@ -11,6 +14,9 @@ class OrdersController < ApplicationController
 
 	def new 
 		@order = Order.new
+	end
+
+	def show
 	end
 
 	def edit
@@ -24,7 +30,6 @@ class OrdersController < ApplicationController
 	end
 
 	def update
-
 	end
 
 	def add_to_cart
@@ -40,6 +45,10 @@ class OrdersController < ApplicationController
 	end
 
 	private 
+
+	def set_order
+      @order = User.find(params[:id])
+    end
 
 	def order_params
 		params.require(:order).permit(:date, :school_id, :user_id, :grand_total, :payment_receipt)
