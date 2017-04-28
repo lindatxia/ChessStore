@@ -1,5 +1,7 @@
 <% if logged_in? %>
-	<%= link_to "Welcome, #{current_user.first_name}", user_path(current_user) %>
+	<li><%= link_to "Cart #{@cart_count}", add_to_cart_path(1) %> </li>
+	
+	<li><%= link_to "Welcome, #{current_user.first_name}", user_path(current_user) %></li>
 	<li><%= link_to "Edit settings", edit_user_path(current_user) %></li>
 	<li><%= link_to "Logout", logout_path %></li>
 
@@ -7,4 +9,3 @@
     <%= link_to 'Login', login_path %>
            
 <% end %>
-

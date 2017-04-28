@@ -6,12 +6,10 @@ class SessionsController < ApplicationController
 
   def create
 
-    
-
     user = User.find_by_email(params[:email])
     if user && User.authenticate(params[:email], params[:password])
-      
-      Cart.create_cart
+
+      create_cart
 
       session[:user_id] = user.id
       redirect_to home_path, notice: "Logged in!"

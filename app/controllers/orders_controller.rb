@@ -33,11 +33,11 @@ class OrdersController < ApplicationController
 	end
 
 	def add_to_cart
-		Cart.add_item_to_cart(params[:item_id])
+		add_item_to_cart(params[:item_id], 1)
 	end
 
 	def remove_from_cart
-		Cart.remove_item_from_cart(params[:item_id])
+		remove_item_from_cart(params[:item_id], 1)
 	end
 
 	def destroy 
