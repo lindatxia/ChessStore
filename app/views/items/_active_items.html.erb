@@ -1,8 +1,8 @@
 
 <% if @boards.empty? && @pieces.empty? && @clocks.empty? && @supplies.empty? %>
-  <h3>There are no items in the system at this time</h3>
+  <h3 class="heading">There are no items in the system at this time</h3>
 <% else %>
-  <h3>Available Items at the Chess Warehouse</h3>
+  <h3 class="heading">Available Items at the Chess Warehouse</h3>
 
   <%= render partial: "current_items", locals: {items: @boards, item_type: "boards"}  %>
 

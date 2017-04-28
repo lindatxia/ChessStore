@@ -1,3 +1,7 @@
 
 <%# render :partial => 'general_home' %>
+<% if current_user && current_user.role?(:admin) %> 
+	<%= render :partial => 'admin_cards' %>
+<% end %>
+
 <%= render :partial => 'reorder_list' %>
