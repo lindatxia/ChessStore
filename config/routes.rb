@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new', :as => :signup
   get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout
+
+  get 'add_to_cart/:item_id' => 'orders#add_to_cart', :as => :add_to_cart
+  get 'remove_from_cart/:item_id' => 'orders#remove_from_cart', :as => :remove_from_cart
+
   
   # Set the root url
   root :to => 'home#home'  
