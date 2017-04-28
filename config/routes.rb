@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :items
   resources :purchases
   resources :item_prices
+  resources :orders
 
   # Added for Phase 5
   resources :users

@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 	include ChessStoreHelpers::Cart
-	
+
 	def index 
 		if current_user.role?(:customer)
 			@orders = current_user.orders.chronological.to_a
@@ -17,12 +17,26 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		@order = Order.new(order_params)
+		if @order.save 
+			redirect_to orders_path(@order), notice: "Successfully created"
+		end
+	end
 
+	def update
+
+	end
+
+	def add_to_cart
+		Cart.add_item_to_cart(params[:id])
+	end
+
+	def remove_from_cart
+		Cart.remove_item_from_cart(params[:id])
 	end
 
 	def destroy 
 		@order.destroy
-
 	end
 
 	private 
