@@ -27,7 +27,6 @@
     
     <%= render partial: 'partials/nav' %>
 
-
     <div class="sidebar">
        <%= render partial: 'partials/sidebar' %>
     </div>
@@ -39,12 +38,13 @@
     </div>
 
     <div class="container"><%= yield %></div>
+     
 
     <footer>
       <div class="small-12 columns" id="footer">
         <%= render partial: 'partials/footer' %>
       </div>
     </footer> 
-    <%= javascript_include_tag "application" %>
+    
   </body>
 </html>

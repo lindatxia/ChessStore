@@ -14,16 +14,18 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(document).ready(function() {
-  $('.dropdown-button').dropdown();
-  $('select').material_select();
 
-  // Initialize collapse button
-  $(".button-collapse").sideNav();
-  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-  //$('.collapsible').collapsible();
+$(document).ready(function() {
+	$(".dropdown-button").dropdown({belowOrigin:true});
+	$('select').material_select();
+
+	// Initialize collapse button
+	$(".button-collapse").sideNav();
+	// Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  	//$('.collapsible').collapsible();
         
 });
+
 
 // Datepicker code
 $(function() {
@@ -31,3 +33,4 @@ $(function() {
     format: 'mm/dd/YYYY'
   });
 });
+      
