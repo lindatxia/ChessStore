@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col s2">
+  </div>
+  <div class="col s7">
+
+    <h3 class="heading"> <%= current_user.first_name%> <%=current_user.last_name%></h3>
+
+    <h4 class="text">Account Details</h4>
+
+    <p class="text">
+
+
+    Phone: <%= current_user.phone %> 
+        
+
+    <br/>
+
+    Email: <a href= "mailto:<%= current_user.email %>"><%= current_user.email %></a>
+
+    <br/> 
+
+    Password: *****
+
+    </p>
+   
+
+  </div>
+</div>
