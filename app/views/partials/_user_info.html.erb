@@ -7,8 +7,13 @@
 
     <h4 class="text">Account Details</h4>
 
-   <%= image_tag @user.picture_url %>
-
+    <div class="user_photo"> 
+      <% if @user.picture? %> 
+        <%= image_tag(@user.picture_url)%>
+      <% else %> 
+        <%= image_tag('missing_pic.png', border:0)%>
+      <% end %> 
+    </div>
 
     <form action="#">
       <div class="file-field input-field">
