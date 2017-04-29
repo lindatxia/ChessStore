@@ -20,6 +20,14 @@ $(document).ready(function() {
 	$(".dropdown-button").dropdown({belowOrigin:true});
 	$('select').material_select();
 
+	$('.carousel.carousel-slider').carousel({fullWidth: true, padding:200},setTimeout(autoplay, 4500));
+
+	function autoplay() {
+		$('.carousel').carousel('next');
+		setTimeout(autoplay, 4500);
+	}
+
+
 	// Initialize collapse button
 	$(".button-collapse").sideNav();
 	// Initialize collapsible (uncomment the line below if you use the dropdown variation)
