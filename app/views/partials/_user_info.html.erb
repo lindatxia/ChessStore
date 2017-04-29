@@ -7,6 +7,35 @@
 
     <h4 class="text">Account Details</h4>
 
+    <%= form_for @user, :html => { :multipart => true } do |f| %>
+    <form action="#">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input type="file">
+        </div>
+
+        <div class="field"> 
+          <%= f.file_field :photo %>
+        </div>
+
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </form>
+    <% end %>
+
+
+      <% if @band.photo_url.nil? || @band.photo_url.include?("missing") %>
+    <%= image_tag "missing.png" %>
+  <% else %>
+    <%= image_tag @band.photo_url %>
+  <% end %>
+
+
+    
+
     <p class="text">
 
 
