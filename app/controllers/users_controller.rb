@@ -4,15 +4,15 @@ class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 	before_action :check_login, only: [:new, :create]
 
-	def new 
-		@user = User.new
+	def index
+		@users = User.alphabetical.paginate(:page => params[:page]).per_page(7)
 	end
 
 	def show 
 	end
 
-	def index
-		@users = User.alphabetical.paginate(:page => params[:page]).per_page(7)
+	def new 
+		@user = User.new
 	end
 
 	def edit 
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 	def create 
 		@user = User.new(user_params)
 		if @user.save
-			redirect_to(home_path, :notice => 'User was successfully created.')
+			redirect_to(@user, :notice => 'User was successfully created.')
 		else
 			flash[:error] = "This user could not be created."
 			render :action => "new"
@@ -46,9 +46,9 @@ class UsersController < ApplicationController
 
 	def user_params
 		if current_user && current_user.role?(:admin)
-			params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role, :active)  
+			params.require(:user).permit(:first_name, :last_name, :username, :email, :picture, :phone, :password, :password_confirmation, :role, :active)  
 		else
-			params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :active)
+			params.require(:user).permit(:first_name, :last_name, :username, :email, :picture, :phone, :password, :password_confirmation, :active)
 		end
 	end
 

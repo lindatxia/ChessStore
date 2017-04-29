@@ -1,9 +1,10 @@
-<div class="container">
+<div class="row">
+  <div class="col s2">
+  </div>
+  <div class="col s10">
 
 <%= simple_form_for @user do |f| %>
 	<% if @user.errors.any? %>
-
-
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -16,34 +17,52 @@
 
   <% end %>
 
-	<p>
+	<div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
-  </p>
-  <p>
+  
+  </div>
+  <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.label :email, "Email Address" %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
     <%= f.text_field :email %>
-  </p>
-  <p>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password %>
-  </p>
-  <p>
+  </div>
+
+  <div class="field">
     <%= f.label :password_confirmation, "Confirm Password" %><br />
     <%= f.password_field :password_confirmation %>
-  </p>
-	<p>
+  </div>
 
   <div class="field" id = "role">
     <%= f.input(:role, as: :select, collection: User::ROLES)%>
   </div>
-  </p>
-	
+
+  <div class="field"> 
+    <%= f.label :picture %><br /> 
+    <%= f.file_field :picture %>
+  </div>
+
   <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>
 
 <% end %>
+</div>
 </div>

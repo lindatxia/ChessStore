@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   # get modules to help with some functionality
   include ChessStoreHelpers::Validations
 
+  # Image uploader 
+  mount_uploader :picture, PictureUploader
+
   # use has_secure_password
   has_secure_password
 
