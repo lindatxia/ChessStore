@@ -18,21 +18,25 @@ class HomeController < ApplicationController
   	def boards
   		@items = Item.active.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)
   		@category = 'Boards'
+  		@inactive_items = Item.inactive.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)
   	end
 
 	def clocks
 		@items = Item.active.for_category('clocks').alphabetical.paginate(:page => params[:page]).per_page(10)
 		@category = 'Clocks'
+		@inactive_items = Item.inactive.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)
 	end
 
 	def pieces 
 		@items = Item.active.for_category('pieces').alphabetical.paginate(:page => params[:page]).per_page(10)
 		@category = 'Pieces'
+		@inactive_items = Item.inactive.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)
 	end
 
 	def supplies
 		@items = Item.active.for_category('supplies').alphabetical.paginate(:page => params[:page]).per_page(10)
 		@category = 'Supplies'
+		@inactive_items = Item.inactive.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)
 	end
 
   

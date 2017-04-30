@@ -1,11 +1,12 @@
 <% unless items.nil? || items.empty? %>
-  <h5><%= item_type.capitalize %></h5>
+  <h4><%= item_type.capitalize %></h4>
   <table class="table table-striped">
     <thead>
       <tr>
         <th width="300">Name</th>
         <th width="100">Price</th>
         <th width="100">Inventory</th>
+    
       </tr>
     </thead>
     <tbody>
@@ -14,6 +15,7 @@
           <td><%= link_to item.name, item_path(item) %></td>
           <td><%= number_to_currency item.current_price %></td>
           <td><%= item.inventory_level %></td>
+          
         </tr>
       <% end %>
     </tbody>

@@ -1,11 +1,13 @@
-<h5 class="heading"><%=@category%></h5>
+<h4 class="heading"><%=@category%></h4>
 
 	<table class = "highlight">
 	<thead>
 		<tr>
 			<th data-field="name" class="table-heading">Name</th>
 			<th data-field="price" class="table-heading">Price</th>
-			<th data-field="inventory" class="table-heading">Inventory</th>
+			<% if logged_in? && current_user.role != "customer" %>
+				<th data-field="inventory" class="table-heading">Inventory</th>
+			<% end%> 
 		</tr>
 	</thead>
 
@@ -14,7 +16,9 @@
 		<tr>
 			<td class="link text"><%= link_to item.name, item_path(item) %></td>
             <td class="text"><%= item.current_price.nil? ? "N/A" : number_to_currency(item.current_price) %></td>
-            <td class="text"><%= item.inventory_level %></td>
+            <% if logged_in? && current_user.role != "customer" %>
+            	<td class="text"><%= item.inventory_level %></td>
+            <% end %>
         </tr>
         <% end %>
     </tbody>

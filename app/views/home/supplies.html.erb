@@ -5,6 +5,9 @@
   <div class="col s10">
 
   	<%= render partial: 'available_items' %>
+  	<% if logged_in? && current_user.role != "customer" %> 
+  		<%= render partial: 'inactive_items'%>
+ 	<% end %> 
         
         
   </div>

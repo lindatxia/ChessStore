@@ -1,7 +1,7 @@
 <% unless @inactive_items.empty? %>
   <div class="panel clearfix">
     <h4 class="heading">Inactive Items</h4>
-    <ul>
+    <ul class="text">
       <% @inactive_items.each do |item| %>
         <li><%= link_to item.name, item_path(item) %></li>
       <% end %>
