@@ -206,11 +206,9 @@ label {
 
 }
 
-.card.horizontal {
-  
+.card.horizontal { 
   box-shadow: 0 0.5px 1px 0 rgba(0,0,0,0.2), 0 0.5px 6px 0 rgba(0,0,0,0.02), 0 3px 1px -2px rgba(0,0,0,0.2);
   width: 800px;
-
 }
 
 .link a {
@@ -219,7 +217,7 @@ label {
 
 .card {
   display:inline-block;
-  float:left
+  float:left;
 }
 
 

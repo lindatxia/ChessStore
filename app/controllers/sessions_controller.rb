@@ -5,10 +5,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-
     user = User.find_by_email(params[:email])
     if user && User.authenticate(params[:email], params[:password])
 
+      # FIRST THING, create a cart whenever the user logs in
       create_cart
 
       session[:user_id] = user.id

@@ -43,3 +43,15 @@
   <b>Active</b>: <%= @item.active ? 'Yes' : 'No' %>
 </p>
 <% end %> 
+
+
+
+<p class="text">
+    <%= link_to("Add to Cart", add_to_cart_path(@item.id), class: 'button tiny radius') %>
+</p>
+
+
+
+
+
+

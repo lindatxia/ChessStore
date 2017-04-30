@@ -33,7 +33,10 @@ class OrdersController < ApplicationController
 	end
 
 	def add_to_cart
+		puts "got here"
 		add_item_to_cart(params[:item_id])
+		@cart_count += 1
+		puts @cart_count
 		redirect_to orders_path
 	end
 
@@ -47,7 +50,7 @@ class OrdersController < ApplicationController
 		redirect_to orders_path, notice: "Successfully removed #{@order.id} from the system."
 	end
 
-	private 
+private 
 
 	def set_order
       @order = User.find(params[:id])

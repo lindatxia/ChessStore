@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   private
   def count_items_in_cart
     @cart_count = get_list_of_items_in_cart.size
+    puts @cart_count
   end
 
   def current_user
