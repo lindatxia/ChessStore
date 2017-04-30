@@ -1,26 +1,44 @@
 <h4 class="heading"><%=@category%></h4>
 
-	<table class = "highlight">
-	<thead>
-		<tr>
-			<th data-field="name" class="table-heading">Name</th>
-			<th data-field="price" class="table-heading">Price</th>
-			<% if logged_in? && current_user.role != "customer" %>
-				<th data-field="inventory" class="table-heading">Inventory</th>
-			<% end%> 
-		</tr>
-	</thead>
+<br/>
 
-	<tbody>
-		<% @items.each do |item| %>
-		<tr>
-			<td class="link text"><%= link_to item.name, item_path(item) %></td>
-            <td class="text"><%= item.current_price.nil? ? "N/A" : number_to_currency(item.current_price) %></td>
-            <% if logged_in? && current_user.role != "customer" %>
-            	<td class="text"><%= item.inventory_level %></td>
-            <% end %>
-        </tr>
-        <% end %>
-    </tbody>
+<% @items.each do |item| %> 
+<div class="col s12">
+	<div class="card horizontal">
+		<div class="card-image">
+			<%= image_tag('img_not_available.png', border:0)%>
+		</div>
 
-	</table>
+		<div class="card-stacked">
+			<div class="card-content">
+				<h5 class="heading"> 
+					<div class="link">
+					<%= link_to item.name, item_path(item) %>
+					</div>
+				</h5>
+
+				<h5 class="heading">
+					<%= item.current_price.nil? ? "N/A" : number_to_currency(item.current_price) %>
+				</h5>
+
+				<p class="text">
+					Get it on or before <%= 4.days.from_now.strftime("%m/%d/%y") %>
+					<% if logged_in? && current_user.role != "customer" %>
+            			Inventory level: <%= item.inventory_level %>
+            		<% end %>
+				</p>
+			</div>
+
+			<div class="card-action">
+				<a href="#">This is a link</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<br/>
+
+<% end %>
+
+
