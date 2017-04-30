@@ -3,12 +3,14 @@
   </div>
   <div class="col s10">
 	<%# render :partial => 'general_home' %>
+	
 	<% if current_user && current_user.role?(:admin) %> 
 		<%= render :partial => 'admin_cards' %>
 		<%= render :partial => 'reorder_list' %>
 
 	<% elsif current_user && current_user.role?(:customer)%> 
 		<%= render :partial => 'carousel' %>
+		<%= render :partial => 'shop_chess' %>
 	<% end %>
 	</div>
 </div>

@@ -14,5 +14,18 @@ class HomeController < ApplicationController
 
 	def privacy
 	end
+
+  	def boards
+  	end
+
+	def clocks
+	end
+
+	def pieces 
+	end
+
+	def supplies
+	end
+
   
 end

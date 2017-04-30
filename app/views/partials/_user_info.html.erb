@@ -3,7 +3,7 @@
   </div>
   <div class="col s7">
 
-    <h3 class="heading"> <%= @user.first_name%> <%=@user.last_name%> (<%=@user.role.capitalize%>)</h3>
+    <h3 class="heading"> <%= @user.first_name%> <%=@user.last_name%> </h3>
 
     <h4 class="text">Account Details</h4>
 
@@ -16,6 +16,10 @@
     </div>
 
     <p class="text">
+
+    <%=@user.role.capitalize%> since <%=@user.created_at.strftime("%m/%d/%y")%>
+
+    <br/><br/>
 
     Phone: <%= @user.phone %> 
         
