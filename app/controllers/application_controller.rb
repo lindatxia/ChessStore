@@ -8,13 +8,18 @@ class ApplicationController < ActionController::Base
 
   private
   def count_items_in_cart
-    @cart_count = get_list_of_items_in_cart.size
-    puts @cart_count
+    # The cart needs to exist first (when you log in, a cart is created)
+    # This method is always running, so consider the exception when a guest customer is browsing the site.
+    
+    unless session[:cart].nil?
+      @cart = get_list_of_items_in_cart
+    end
   end
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
   # Helper methods make this method available to the views
   helper_method :current_user
 

@@ -33,10 +33,7 @@ class OrdersController < ApplicationController
 	end
 
 	def add_to_cart
-		puts "got here"
 		add_item_to_cart(params[:item_id])
-		@cart_count += 1
-		puts @cart_count
 		redirect_to orders_path
 	end
 
