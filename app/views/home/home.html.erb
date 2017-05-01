@@ -8,9 +8,21 @@
 		<%= render :partial => 'admin_cards' %>
 		<%= render :partial => 'reorder_list' %>
 
-	<% elsif current_user && current_user.role?(:customer)%> 
+	<% elsif (current_user && current_user.role?(:customer))%> 
 		<%= render :partial => 'carousel' %>
 		<%= render :partial => 'shop_chess' %>
+
+	<% elsif (current_user && current_user.role?(:shipper))%> 
+		Hello shipper
+
+	<% elsif (current_user && current_user.role?(:manager))%> 
+		Hello manager
+
+	<!-- Be my guest! --> 
+	<% else %> 
+		<%= render :partial => 'carousel' %>
+		<%= render :partial => 'shop_chess' %>
+
 	<% end %>
 	</div>
 </div>
