@@ -44,11 +44,11 @@
 </p>
 <% end %> 
 
-
-
+<% if logged_in? == false %> 
 <p class="text">
     <%= link_to("Add to Cart", add_to_cart_path(@item.id), class: 'button tiny radius') %>
 </p>
+<% end %>
 
 
 
