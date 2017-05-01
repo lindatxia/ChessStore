@@ -1,22 +1,46 @@
-<div class="container"> 
-<h5 class="heading">Log In</h5>
+<div class="container">
+<div class="row">
 
-<%= form_tag sessions_path do %>
-  
-	<div class="control-group">
-    <%= label_tag :email %>
-    <div class="controls">
-      <%= text_field_tag :email, params[:email] %>
-    </div>
+  <div class="col s6">
+    <h5 class="heading">
+      Returning Customer
+    </h5>
+
+    <%= form_tag sessions_path do %>
+      
+    	<div class="control-group">
+        <%= label_tag :email %>
+        <div class="controls">
+          <%= text_field_tag :email, params[:email] %>
+        </div>
+      </div>
+
+    	<div class="control-group">
+        <%= label_tag :password %>
+        <div class="controls">
+          <%= password_field_tag :password %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="waves-effect waves-light btn">
+        <%= submit_tag "Log In" %>
+        </a>
+      </div>
+    <% end %>
+
   </div>
 
-	<div class="control-group">
-    <%= label_tag :password %>
-    <div class="controls">
-      <%= password_field_tag :password %>
-    </div>
+  <div class="col s4">
+    <h5 class="heading">New Customer</h5>
+      <br/>
+      <button class="waves-effect waves-light btn acc">
+        <%= link_to "Create Account", signup_path%> 
+        byebug
+      </button>
+
+
   </div>
 
-  <div class="actions"><%= submit_tag "Log In" %></div>
-  </div>
-<% end %>
+</div>
+</div>
