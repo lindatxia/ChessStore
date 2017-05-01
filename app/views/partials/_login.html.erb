@@ -22,6 +22,16 @@
 
 			<ul class="right hide-on-med-and-down">
 
+				<% if logged_in? && current_user.role == "customer" %> 
+
+					<li> 
+
+						<%= link_to "My Orders", orders_path%>
+
+					</li>
+
+				<% end %> 
+
 				<li><%= link_to add_to_cart_path(1) do %> 
 					<i class="small material-icons prefix left">shopping_cart</i> Cart&nbsp;&nbsp; 
 					<% if @cart.size > 0 %> 
