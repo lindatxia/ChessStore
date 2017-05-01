@@ -4,15 +4,27 @@
 
   <div class="col s10">
 
-  		<% @cart.each do |c|%> 
+    <% if @cart.empty? %>
+
+      <p class="text"> Your cart is empty, like your soul. </p>
+
+    <% else %> 
+
+      <% @cart.each do |c|%> 
 
 
-  			<%=c.item.name%>
-  			<%=c.quantity%>
-  			<br/>
+        <%=c.item.name%>
+        <%=c.quantity%>
+        <br/>
 
-  		<% end%>
+      <% end%>
 
+
+
+    <% end %>
+
+
+  		
   		
   	
 
