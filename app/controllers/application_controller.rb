@@ -4,17 +4,23 @@ class ApplicationController < ActionController::Base
   include ChessStoreHelpers::Cart
 
   protect_from_forgery with: :exception
+
+  # Automaticaly evaluated before any item in the controller is executed
   before_action :count_items_in_cart
 
   private
+
   def count_items_in_cart
     # The cart needs to exist first (when you log in, a cart is created)
     # This method is always running, so consider the exception when a guest customer is browsing the site.
     
     unless session[:cart].nil?
       @cart = get_list_of_items_in_cart
+      @cart_subtotal = calculate_cart_items_cost
     end
   end
+
+
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

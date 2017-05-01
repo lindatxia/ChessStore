@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'pieces' => 'home#pieces', :as => :pieces
   get 'supplies' => 'home#supplies', :as => :supplies
 
+  get 'cart' => 'home#cart', :as => :cart
+
   # Set the root url
   root :to => 'home#home'  
 

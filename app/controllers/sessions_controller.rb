@@ -21,7 +21,10 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+
+    # We also need to destroy a cart after we log out
     destroy_cart
+    
     redirect_to home_path, notice: "Logged out!"
   end
 

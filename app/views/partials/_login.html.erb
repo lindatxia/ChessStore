@@ -30,7 +30,7 @@
 
 				<% end %> 
 
-				<li><%= link_to add_to_cart_path(1) do %> 
+				<li><%= link_to cart_path do %> 
 					<i class="small material-icons prefix left">shopping_cart</i> Cart&nbsp;&nbsp; 
 					<% if @cart.size > 0 %> 
 						<span class="new badge" data-badge-caption=""><%= @cart.size %></span>

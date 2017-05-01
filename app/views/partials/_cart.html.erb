@@ -4,24 +4,62 @@
 
   <div class="col s10">
 
+    <h3 class="heading"> Shopping Cart </h3>
+
     <% if @cart.empty? %>
 
       <p class="text"> Your cart is empty, like your soul. </p>
 
     <% else %> 
 
-      <% @cart.each do |c|%> 
+      <% @cart.each do |item|%> 
+ 
+      <div class="card horizontal">
+      <div class="card-image">
+        <%= image_tag('img_not_available.png', border:0)%>
+      </div>
 
+      <div class="card-stacked">
+        <div class="card-content">
+          <h5 class="heading">
+            <div class="link">
+              <%= link_to item.item.name, item_path(item.item) %>
+            </div>
+          </h5>
 
-        <%=c.item.name%>
-        <%=c.quantity%>
-        <br/>
+          <h5 class="heading">
+            <%= item.item.current_price.nil? ? "N/A" : number_to_currency(item.item.current_price) %>
+          </h5>
+
+          <p class="text">
+            Get it on or before <%= 4.days.from_now.strftime("%m/%d/%y") %>
+            <br/> 
+
+            Quantity: <%= item.quantity %> 
+
+            <% if logged_in? && current_user.role != "customer" %>
+              Inventory level: <%= item.item.inventory_level %>
+            <% end %>
+          </p>
+        </div> <!-- Close card-content -->
+
+      <div class="card-action">
+        <%= link_to "Remove from Cart", remove_from_cart_path(item.item.id) %>
+      </div>
+
+    </div> <!-- Close card-stacked -->
+
+    </div> <!-- Close card horizontal -->
+    
+    <br/>
 
       <% end%>
 
-
-
     <% end %>
+
+    <p class="text">
+      Subtotal: <%= number_to_currency(@cart_subtotal) %> 
+    </p>
 
 
   		
