@@ -70,6 +70,10 @@ class Ability
 				u.id == user.id
 			end
 
+			can :update, User do |u|
+				u.role?(:customer)
+			end
+
 			# 2. Can place new orders and cancel unshipped orders
 			can :create, Order
 			can :destroy, Order

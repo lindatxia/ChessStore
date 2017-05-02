@@ -10,6 +10,9 @@ class Order < ActiveRecord::Base
   belongs_to :school
   belongs_to :user
 
+  # Nested attributes for order form
+  accepts_nested_attributes_for :school, reject_if: lambda { |school| school[:name].blank? }, allow_destroy: true
+
   # Virtual attributes (non-saved)
   attr_accessor :credit_card_number
   attr_accessor :expiration_year

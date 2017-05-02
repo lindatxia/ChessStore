@@ -9,6 +9,8 @@ class OrderTest < ActiveSupport::TestCase
   should belong_to(:user)
   should belong_to(:school)
 
+  should accept_nested_attributes_for(:school).allow_destroy(true)
+
   # test simple validations with matchers
   should validate_numericality_of(:grand_total).is_greater_than_or_equal_to(0)
   # ... if there is a validation on date field

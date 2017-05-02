@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
 
 	def new 
 		@order = Order.new
+		# @order.school.build
 	end
 
 	def show
@@ -23,9 +24,23 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		# if params[:school_id] then @order.school_id = params[:school_id]
+		# else
+		# @school = School.new(PARAMETERS WE WROTE BELOW)
+		# if @school.save
+			#@order.school_id = @school.id
+			#@ 
+		# Else 
+
+		
+
 		@order = Order.new(order_params)
+
 		if @order.save 
-			redirect_to orders_path(@order), notice: "Successfully created"
+			redirect_to order_path(@order), notice: "Successfully created order" 
+		else 
+			flash[:error] = "This order could not be created."
+			render 'new'
 		end
 	end
 
@@ -50,10 +65,17 @@ class OrdersController < ApplicationController
 private 
 
 	def set_order
-      @order = User.find(params[:id])
+      @order = Order.find(params[:id])
     end
 
 	def order_params
-		params.require(:order).permit(:date, :school_id, :user_id, :grand_total, :payment_receipt)
+		params.require(:order).permit(:date, :school_id, :user_id, school_attributes: [:id, :name, :street_1, :street_2, :city, :state, :zip, :min_grade, :max_grade, :_destroy])
 	end
+
+	# def order_params
+	# params.require(:order).permit(:date, :school_id, :user_id, :school_name, :school_zip, :school_street1, :school_street2, :school_city, :school_state)
+	# end
+
+
+
 end

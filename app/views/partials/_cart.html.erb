@@ -53,12 +53,16 @@
     
     <br/>
 
-      <% end%>
+    <% end%>
 
     <% end %>
 
     <p class="text">
       Subtotal: <%= number_to_currency(@cart_subtotal) %> 
+
+      <br/>
+
+      <%= link_to "Place an Order", new_order_path %> 
     </p>
 
 
