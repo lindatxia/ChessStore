@@ -17,6 +17,16 @@ class Order < ActiveRecord::Base
   attr_accessor :credit_card_number
   attr_accessor :expiration_year
   attr_accessor :expiration_month
+
+  attr_accessor :school_name
+  attr_accessor :school_street_1
+  attr_accessor :school_street_2
+  attr_accessor :school_city
+  attr_accessor :school_state
+  attr_accessor :school_zip
+  attr_accessor :school_min_grade
+  attr_accessor :school_max_grade
+
   attr_reader :destroyable
 
   # Scopes

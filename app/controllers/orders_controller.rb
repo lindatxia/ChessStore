@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
 	include ChessStoreHelpers::Cart
+	include ChessStoreHelpers::Shipping
 
-	before_action :set_user, only: [:show, :destroy]
+	before_action :set_order, only: [:show, :destroy]
 	before_action :check_login, only: [:new, :create]
 
 	def index 
@@ -18,33 +19,47 @@ class OrdersController < ApplicationController
 	end
 
 	def show
+		
 	end
 
 	def edit
 	end
 
 	def create
-		# if params[:school_id] then @order.school_id = params[:school_id]
-		# else
-		# @school = School.new(PARAMETERS WE WROTE BELOW)
-		# if @school.save
-			#@order.school_id = @school.id
-			#@ 
-		# Else 
+		@order = Order.new
+		# Dropdown stuff
+		if params[:order][:school_id]
+			@order.school_id = params[:order][:school_id]
+		else 
+			@school = School.new(name: params[:order][:school_name], street_1: params[:order][:school_street_1], street_2: params[:order][:school_street_2], city: params[:order][:school_city], state: params[:order][:school_state], zip: params[:order][:school_zip], min_grade: params[:order][:school_min_grade], max_grade: params[:order][:school_max_grade])
+			if @school.save!
+				@order.school_id = @school.id
+			else 
+				flash[:error] = "This school could not be created."
+				return render 'new'
+			end
+		end
 
-		
 
-		@order = Order.new(order_params)
 
-		if @order.save 
-			redirect_to order_path(@order), notice: "Successfully created order" 
+		@order = Order.new(school_id: params[:order][:school_id], user_id: current_user.id, credit_card_number: params[:order][:credit_card_number], expiration_year: params[:order][:expiration_year].to_i, expiration_month: params[:order][:expiration_month].to_i) 
+
+		# Do grandtotal (o and shipping) and payment receipt 
+		@subtotal = calculate_cart_items_cost
+		@order.grand_total = calculate_cart_shipping + @subtotal
+
+		if @order.save!
+			@order.pay
+			return redirect_to order_path(@order), notice: "Successfully created order" 
 		else 
 			flash[:error] = "This order could not be created."
-			render 'new'
+			return render 'new'
 		end
+
 	end
 
 	def update
+
 	end
 
 	def add_to_cart
@@ -69,13 +84,7 @@ private
     end
 
 	def order_params
-		params.require(:order).permit(:date, :school_id, :user_id, school_attributes: [:id, :name, :street_1, :street_2, :city, :state, :zip, :min_grade, :max_grade, :_destroy])
+		params.require(:order).permit(:school_id, :user_id, :school_name, :school_street_1, :school_street_2, :school_city, :school_state, :school_zip, :school_min_grade, :school_max_grade)
 	end
-
-	# def order_params
-	# params.require(:order).permit(:date, :school_id, :user_id, :school_name, :school_zip, :school_street1, :school_street2, :school_city, :school_state)
-	# end
-
-
 
 end

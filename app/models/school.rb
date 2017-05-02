@@ -3,6 +3,7 @@ class School < ActiveRecord::Base
   # get an array of the states in U.S.
   STATES_LIST = [['Alabama', 'AL'],['Alaska', 'AK'],['Arizona', 'AZ'],['Arkansas', 'AR'],['California', 'CA'],['Colorado', 'CO'],['Connectict', 'CT'],['Delaware', 'DE'],['District of Columbia ', 'DC'],['Florida', 'FL'],['Georgia', 'GA'],['Hawaii', 'HI'],['Idaho', 'ID'],['Illinois', 'IL'],['Indiana', 'IN'],['Iowa', 'IA'],['Kansas', 'KS'],['Kentucky', 'KY'],['Louisiana', 'LA'],['Maine', 'ME'],['Maryland', 'MD'],['Massachusetts', 'MA'],['Michigan', 'MI'],['Minnesota', 'MN'],['Mississippi', 'MS'],['Missouri', 'MO'],['Montana', 'MT'],['Nebraska', 'NE'],['Nevada', 'NV'],['New Hampshire', 'NH'],['New Jersey', 'NJ'],['New Mexico', 'NM'],['New York', 'NY'],['North Carolina','NC'],['North Dakota', 'ND'],['Ohio', 'OH'],['Oklahoma', 'OK'],['Oregon', 'OR'],['Pennsylvania', 'PA'],['Rhode Island', 'RI'],['South Carolina', 'SC'],['South Dakota', 'SD'],['Tennessee', 'TN'],['Texas', 'TX'],['Utah', 'UT'],['Vermont', 'VT'],['Virginia', 'VA'],['Washington', 'WA'],['West Virginia', 'WV'],['Wisconsin ', 'WI'],['Wyoming', 'WY']].freeze
 
+
   # Relationships
   has_many :orders
   has_many :users, through: :orders
@@ -20,6 +21,9 @@ class School < ActiveRecord::Base
   validates_numericality_of :max_grade, greater_than_or_equal_to: :min_grade, less_than_or_equal_to: 12, only_integer: true, allow_blank: true
   validates_inclusion_of :state, in: STATES_LIST.to_h.values, message: "is not an option"
   validate :school_is_not_a_duplicate, on: :create
+
+
+  SCHOOL_LIST = School.active.alphabetical.map{|i| [i.name, i.id] }
 
   def already_exists?
     School.where(name: self.name, zip: self.zip).size == 1
