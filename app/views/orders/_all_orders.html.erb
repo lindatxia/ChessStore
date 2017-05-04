@@ -1,3 +1,4 @@
+<br/>
 <% if @orders.empty? %> 
 	
 	<h5 class="heading"> There are no orders at this time. </h5>
@@ -25,11 +26,17 @@
 						<!-- For each order item in order... --> 
 						<% o.order_items.each do |oi| %> 
 
-							<%= oi.item.name %> 
-							(<%= oi.quantity%>)
+							<%= link_to oi.item.name, item_path(oi.item) %> 
+							<br/>
+							Quantity: <%= oi.quantity%>
+							<br/>
 							<br/>
 
 						<% end %>
+
+						<br/>
+
+						Order Placed: <%= o.date.strftime("%m/%d/%y") %>
 					</p>
 
 				</div>
