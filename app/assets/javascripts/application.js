@@ -27,6 +27,8 @@ $(document).ready(function() {
 		setTimeout(autoplay, 4500);
 	}
 
+	$('ul.tabs').tabs();
+
 
 	// Initialize collapse button
 	$(".button-collapse").sideNav();

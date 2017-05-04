@@ -4,41 +4,33 @@
   </div>
   <div class="col s10">
 
-<% @orders.each do |o| %> 
-<div class="col s12">
-	<div class="card horizontal">
-		<div class="card-image">
-			<%= image_tag('img_not_available.png', border:0)%>
-		</div>
+  <h4 class="heading"> My Orders </h4>
 
-		<div class="card-stacked">
-			<div class="card-content">
-				
-				<h5 class="heading"> 
-					Order ID: <%= o.id %>
-				</h5>
 
-				<br/>
+  <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#all_orders">All Orders</a></li>
+        <li class="tab col s3"><a href="#test2">Open Orders</a></li>
+        
+  </ul>
 
-				<p class="text">
-					<!-- For each order item in order... --> 
-					<% o.order_items.each do |oi| %> 
+   
+  <div id="all_orders" class="col s12">
+  	
+  	<%= render partial: 'all_orders'%>
 
-						<%= oi.item.name %> 
-						(<%= oi.quantity%>)
-						<br/>
+  </div>
 
-					<% end %>
-				</p>
+  <div id="test2" class="col s12">
+  	
+  	<br/>
+  	<%= render partial: 'open_orders'%>
 
-			
-			</div>
+  </div>
 
-		</div>
 
-	</div>
-</div>
-<% end %> 
+  <br/>
+
+
 </div>
 </div>
 

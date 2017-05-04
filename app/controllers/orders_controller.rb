@@ -8,6 +8,8 @@ class OrdersController < ApplicationController
 	def index 
 		if current_user.role?(:customer)
 			@orders = current_user.orders.chronological.to_a
+			@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.to_a
+		
 		else 
 			@orders = Order.chronological.to_a
 		end

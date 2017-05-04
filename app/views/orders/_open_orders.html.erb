@@ -1,0 +1,47 @@
+<% if @open_orders.empty? %> 
+	
+	<h5 class="heading"> There are no open orders at this time. </h5>
+	<p class="text"> Not all of your order items have shipped in this order. We're working on it! </p>
+
+<% else %> 
+
+	<p class="text"> Not all of your order items have shipped in this order. We're working on it! </p>
+	
+<% @open_orders.each do |o| %> 
+	<div class="col s12">
+		<div class="card horizontal">
+			<div class="card-image">
+				<%= image_tag('img_not_available.png', border:0)%>
+			</div>
+
+			<div class="card-stacked">
+				<div class="card-content">
+					
+					<h5 class="heading"> 
+						Order ID: <%= o.id %>
+					</h5>
+
+					<br/>
+
+
+					<p class="text">
+						<!-- For each order item in order... --> 
+						<% o.order_items.each do |oi| %> 
+
+							<%= oi.item.name %> 
+							(<%= oi.quantity%>)
+							<br/>
+
+						<% end %>
+					</p>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<% end %> 
+
+<% end %>
