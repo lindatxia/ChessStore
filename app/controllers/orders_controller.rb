@@ -19,7 +19,6 @@ class OrdersController < ApplicationController
 	end
 
 	def show
-		
 	end
 
 	def edit
@@ -44,12 +43,15 @@ class OrdersController < ApplicationController
 
 		@order = Order.new(school_id: params[:order][:school_id], user_id: current_user.id, credit_card_number: params[:order][:credit_card_number], expiration_year: params[:order][:expiration_year].to_i, expiration_month: params[:order][:expiration_month].to_i) 
 
-		# Do grandtotal (o and shipping) and payment receipt 
+		# Do grandtotal (oh and shipping) and payment receipt 
 		@subtotal = calculate_cart_items_cost
 		@order.grand_total = calculate_cart_shipping + @subtotal
 
 		if @order.save!
+			# Pay for the order
 			@order.pay
+			# Clear the cart after you pay and the order saves
+			clear_cart
 			return redirect_to order_path(@order), notice: "Successfully created order" 
 		else 
 			flash[:error] = "This order could not be created."
