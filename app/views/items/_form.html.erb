@@ -11,12 +11,19 @@
       <%= f.input :inventory_level, input_html: {class: "avg"} %>
     <% end %>
     <%= f.input :reorder_level, input_html: {class: "avg"} %>
-    <%= f.input :active %>
+    
 
+    <div class="field" id = "active">
+      <%= f.input(:active, as: :boolean, boolean_style: :inline)%>
+    </div>
+
+
+    <div class="field">
     <%= f.label :picture %><br /> 
     <%= f.file_field :picture %>
+    </div>
 
-
+    <br/>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'button radius' %>
