@@ -34,10 +34,12 @@
 
         <p class="collapsible-text">
           <i class="material-icons left">call</i> <%= o.user.phone%>
-          <br/>
+          <br/><br/>
           <i class="material-icons left">email</i><a href="mailto:<%= o.user.email%>" class="link text"><%= o.user.email%></a>
 
+
         </p>
+        <br/>
       	
       	<table>
         
@@ -56,7 +58,8 @@
 	       		<tr>
 	       			<td class="link text"> <%= link_to oi.item.name, item_path(oi.item) %> </td>
 	       			<td class="collapsible-text"> <%= oi.quantity%></td>
-	       			<td class="link text"> <%= link_to("Ship This Item", remove_from_shipping_list_path(oi.id), remote: true) %></td>
+
+	       			<td class="link text"> <button class="waves-effect waves-light btn acc"><%= link_to("Mark As Shipped", remove_from_shipping_list_path(oi.id), remote: true) %></button></td>
 	       		 </tr>
 	       		<% end %>
 			<% end %>
