@@ -7,15 +7,21 @@
       <div class="collapsible-header">
 
       	<h5 class="collapsible-heading"> 
-      		
-		</h5>
+		    </h5>
 
-		<table>
+
+		    <table>
         <tbody>
           <tr>
           <td class="collapsible-text"><i class="material-icons left">input </i>ORDER ID: <%= o.id %></td>	
-            <td class="collapsible-text"><i class="material-icons left">person_pin </i> <%=o.user.proper_name%></td>
-            <td class="collapsible-text"><i class="material-icons left">schedule </i>PLACED: <%=o.date.strftime("%m/%d/%y")%></td>
+          <td class="link text"><i class="material-icons left">person_pin </i><%=o.user.proper_name%></a>
+          </td>
+
+          <td class="collapsible-text"><i class="material-icons left">schedule </i>PLACED: <%=o.date.strftime("%m/%d/%y")%> 
+          </td>
+          <td> 
+            <i class="material-icons right">arrow_drop_down</i>
+          </td>
             
           </tr>
         </tbody>
@@ -25,6 +31,13 @@
       </div>
 
       <div class="collapsible-body">
+
+        <p class="collapsible-text">
+          <i class="material-icons left">call</i> <%= o.user.phone%>
+          <br/>
+          <i class="material-icons left">email</i><a href="mailto:<%= o.user.email%>" class="link text"><%= o.user.email%></a>
+
+        </p>
       	
       	<table>
         
