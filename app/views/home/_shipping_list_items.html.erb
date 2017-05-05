@@ -13,9 +13,9 @@
 		<table>
         <tbody>
           <tr>
-          <td class="collapsible-text"><i class="material-icons left">input </i>Order ID: <%= o.id %></td>	
+          <td class="collapsible-text"><i class="material-icons left">input </i>ORDER ID: <%= o.id %></td>	
             <td class="collapsible-text"><i class="material-icons left">person_pin </i> <%=o.user.proper_name%></td>
-            <td class="collapsible-text"><i class="material-icons left">schedule </i>Placed: <%=o.date.strftime("%m/%d/%y")%></td>
+            <td class="collapsible-text"><i class="material-icons left">schedule </i>PLACED: <%=o.date.strftime("%m/%d/%y")%></td>
             
           </tr>
         </tbody>
@@ -30,9 +30,9 @@
         
         	<thead>
         	<tr>
-        		<th class="text">Item Name</th>
-        		<th class="text">Quantity</th>
-        		<th class="text">Status</th>
+        		<th class="text">ITEM NAME</th>
+        		<th class="text">QUANTITY</th>
+        		<th class="text">STATUS</th>
         	</tr>
 	        </thead>
 
@@ -41,9 +41,9 @@
 	        <% o.order_items.each do |oi| %> 
 	       		<% if oi.shipped_on.nil? %> 
 	       		<tr>
-	       			<td class="collapsible-text"> <%= link_to oi.item.name, item_path(oi.item) %> </td>
+	       			<td class="link text"> <%= link_to oi.item.name, item_path(oi.item) %> </td>
 	       			<td class="collapsible-text"> <%= oi.quantity%></td>
-	       			<td class="collapsible-text"> <%= link_to("Ship This Item", remove_from_shipping_list_path(oi.id), remote: true) %></td>
+	       			<td class="link text"> <%= link_to("Ship This Item", remove_from_shipping_list_path(oi.id), remote: true) %></td>
 	       		 </tr>
 	       		<% end %>
 			<% end %>
