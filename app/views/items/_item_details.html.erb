@@ -50,13 +50,6 @@
 </p>
 <% end %>
 
-<% if logged_in? && current_user.role != "customer" %> 
-<p class="text"> 
-
-    <%= link_to("Upload Picture", edit_item_path(@item.id), class: 'button tiny radius') %>
-</p>
-<% end %> 
-
 
 
 
