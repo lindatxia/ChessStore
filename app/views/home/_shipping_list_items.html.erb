@@ -1,39 +1,62 @@
-<% @orders.each do |o| %> 
+
 <div class="col s12">
-		<div class="card horizontal">
-			<div class="card-stacked">
-				<div class="card-content">
-					
-					<h5 class="heading"> 
-						Order ID: <%= o.id %>
-					</h5>
+	<% @orders.each do |o| %> 
 
-					<p class="text">
-					Order Placed: <%= o.date.strftime("%m/%d/%y") %>
-					</p>
+	<ul class="collapsible" data-collapsible="accordion">
+	<li>
+      <div class="collapsible-header">
 
-					<br/>
+      	<h5 class="collapsible-heading"> 
+      		
+		</h5>
 
-						<!-- For each order item in order... --> 
-						<% o.order_items.each do |oi| %> 
-							<% if oi.shipped_on.nil? %> 
-								<p class="text">
-									<%= link_to oi.item.name, item_path(oi.item) %> 
-									<br/>
-									Quantity: <%= oi.quantity%>
-									<br/>
-									<%= link_to("Ship This Item", remove_from_shipping_list_path(oi.id), remote: true) %>
-									<br/>
-									<br/>
-								</p>
-							<% end %>
-						<% end %>
+		<table>
+        <tbody>
+          <tr>
+          <td class="collapsible-text"><i class="material-icons left">input </i>Order ID: <%= o.id %></td>	
+            <td class="collapsible-text"><i class="material-icons left">person_pin </i> <%=o.user.proper_name%></td>
+            <td class="collapsible-text"><i class="material-icons left">schedule </i>Placed: <%=o.date.strftime("%m/%d/%y")%></td>
+            
+          </tr>
+        </tbody>
+      	</table>
+   
+  
+      </div>
 
-					
-				</div> <!-- Close card content --> 
+      <div class="collapsible-body">
+      	
+      	<table>
+        
+        	<thead>
+        	<tr>
+        		<th class="text">Item Name</th>
+        		<th class="text">Quantity</th>
+        		<th class="text">Status</th>
+        	</tr>
+	        </thead>
 
-			</div> <!-- Close card stacked --> 
+	       <tbody>
+	        <!-- For each order item in order... --> 
+	        <% o.order_items.each do |oi| %> 
+	       		<% if oi.shipped_on.nil? %> 
+	       		<tr>
+	       			<td class="collapsible-text"> <%= link_to oi.item.name, item_path(oi.item) %> </td>
+	       			<td class="collapsible-text"> <%= oi.quantity%></td>
+	       			<td class="collapsible-text"> <%= link_to("Ship This Item", remove_from_shipping_list_path(oi.id), remote: true) %></td>
+	       		 </tr>
+	       		<% end %>
+			<% end %>
+        </tbody>
+      	</table>
 
-		</div> <!-- Close card horizontal --> 
+
+      </div>
+
+    </li>
+   
+  	</ul>
+ 
+	<% end %>	
 </div>
-<% end %>
+

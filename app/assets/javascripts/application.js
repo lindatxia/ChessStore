@@ -18,6 +18,7 @@
 
 $(document).ready(function() {
 	$(".dropdown-button").dropdown({belowOrigin:true});
+	$('.collapsible').collapsible();
 	$('select').material_select();
 
 	$('.carousel.carousel-slider').carousel({fullWidth: true, padding:200},setTimeout(autoplay, 4500));
@@ -33,7 +34,7 @@ $(document).ready(function() {
 	// Initialize collapse button
 	$(".button-collapse").sideNav();
 	// Initialize collapsible (uncomment the line below if you use the dropdown variation)
-  	//$('.collapsible').collapsible();
+  	
         
 });
 
