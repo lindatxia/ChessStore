@@ -40,5 +40,11 @@ class HomeController < ApplicationController
 		@inactive_items = Item.inactive.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)
 	end
 
+	def remove_from_shipping_list
+		OrderItem.where(id: params[:oi_id]).first.shipped
+		@orders = Order.all.not_shipped.chronological.to_a
+		# redirect_to home_path
+	end
+
   
 end

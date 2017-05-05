@@ -1,0 +1,44 @@
+<% @orders.each do |o| %> 
+<div class="col s12">
+		<div class="card horizontal">
+			<div class="card-stacked">
+				<div class="card-content">
+					
+					<h5 class="heading"> 
+						Order ID: <%= o.id %>
+					</h5>
+
+					<p class="text">
+					Order Placed: <%= o.date.strftime("%m/%d/%y") %>
+
+					<br/>
+
+						<!-- For each order item in order... --> 
+						<% o.order_items.each do |oi| %> 
+							<% if oi.shipped_on.nil? %> 
+								<p class="text">
+									<%= link_to oi.item.name, item_path(oi.item) %> 
+									<br/>
+									Quantity: <%= oi.quantity%>
+									<br/>
+									<%= link_to("Ship This Item", remove_from_shipping_list_path(oi.id), remote: true) %>
+									<br/>
+									<br/>
+								</p>
+							<% end %>
+
+						<% end %>
+
+						
+
+						
+					</p>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<% end %>
