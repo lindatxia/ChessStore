@@ -30,7 +30,19 @@
 			</div>
 
 			<div class="card-action">
-				<%= link_to("Add to Cart", add_to_cart_path(item.id)) %>
+
+				<% if logged_in? %> 
+
+					<%= link_to("Add to Cart", add_to_cart_path(item.id)) %>
+
+				<% else %> 
+			
+					<%= link_to("Add to Cart", login_path) %>
+
+				<% end %>
+
+
+				
 			</div>
 		</div>
 

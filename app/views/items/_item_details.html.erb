@@ -48,6 +48,12 @@
 <p class="text">
     <%= link_to("Add to Cart", add_to_cart_path(@item.id), class: 'button tiny radius') %>
 </p>
+
+<% else %> 
+<p class="text">
+    <%= link_to("Add to Cart", login_path, class: 'button tiny radius') %>
+</p>
+
 <% end %>
 
 
