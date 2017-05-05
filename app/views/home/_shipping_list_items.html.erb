@@ -1,5 +1,18 @@
+<% if @orders.empty? %> 
+  <p class="text"> There are no items at this time to ship. 
+  </p>
+  <p> &nbsp;&nbsp; </p>
+  <p> &nbsp;&nbsp; </p>
+  <p> &nbsp;&nbsp; </p>
+  <p> &nbsp;&nbsp; </p>
+  <p> &nbsp;&nbsp; </p>
+  <p> &nbsp;&nbsp; </p>
+  <p> &nbsp;&nbsp; </p>
+  <p> &nbsp;&nbsp; </p>
+  <p> &nbsp;&nbsp; </p>
+<% else %> 
 
-<div class="col s12">
+<div class="col s12 collection">
 	<% @orders.each do |o| %> 
 
 	<ul class="collapsible" data-collapsible="accordion">
@@ -75,4 +88,6 @@
  
 	<% end %>	
 </div>
+
+<% end %>
 

@@ -16,7 +16,7 @@
 		<%= render :partial => 'partials/shipping_list' %>
 
 	<% elsif (current_user && current_user.role?(:manager))%> 
-		Hello manager
+		<%= render :partial => 'manager_reorder_list'%>
 
 	<!-- Be my guest! --> 
 	<% else %> 
