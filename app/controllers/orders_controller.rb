@@ -12,12 +12,12 @@ class OrdersController < ApplicationController
 		
 		else 
 			@orders = Order.chronological.to_a
+			@open_orders = []
 		end
 	end
 
 	def new 
 		@order = Order.new
-		# @order.school.build
 	end
 
 	def show

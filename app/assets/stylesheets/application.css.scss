@@ -13,6 +13,7 @@
  *= require_self
  *= require simple_form
  */
+ 
 
 .tl_name {
   width: 225px;
@@ -235,3 +236,9 @@ label {
 .waves-effect.waves-light.btn.acc a{
   color: white;
 }
+
+#school_form {
+  display: none;
+}
+
+

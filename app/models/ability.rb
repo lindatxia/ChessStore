@@ -57,6 +57,10 @@ class Ability
 				u.id == user.id
 			end
 
+			can :update, User do |u| 
+				u.id == user.id
+			end
+
 			# 2. Can read information related to orders that need to be shipped 
 			can :read, Order
 
