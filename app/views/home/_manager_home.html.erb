@@ -1,0 +1,67 @@
+<div class="row">
+	<div class="col s2">
+	</div>
+	<div class="col s5">
+
+		<%= render partial: 'manager_reorder', locals: { reorder: @reorder_items } %>
+
+	</div> <!-- Close col s5-->
+
+	<div class="col s4 offset-s1">
+
+		<h5 class="heading"> 
+			Create Item Price
+		</h5>
+
+		<div class="card horizontal smaller">
+
+				<div class="card-stacked">
+					<div class="card-content">
+					
+						<p class="link text">
+							
+							Lol, more things here later.
+
+						</p>
+				
+					
+					</div> <!-- Close card content --> 
+
+				</div> <!-- Close card-stacked --> 
+
+		</div> <!-- Closed card horizontal -->
+
+
+
+
+		<h5 class="heading"> 
+			Recent Orders
+		</h5>
+
+		<% @recent_orders.each do |o| %> 
+			<div class="card horizontal smaller">
+
+				<div class="card-stacked">
+					<div class="card-content">
+					
+						<p class="link text">
+						Order ID: <%= o.id %> <br/>
+						Customer: <%= o.user.proper_name%> <br/>
+						Date Placed: <%= o.date.strftime("%m/%d/%y") %> <br/> <br/>
+						</p>
+				
+				
+					</div> <!-- Close card content --> 
+
+				</div> <!-- Close card-stacked --> 
+
+			</div> <!-- Closed card horizontal -->
+
+		<% end %>
+
+	</div>
+
+
+
+</div>
+</div>

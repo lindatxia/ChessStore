@@ -1,17 +1,13 @@
 <%= simple_form_for @purchase, html: { class: 'form-horizontal'}, remote: true do |f| %>
-  <fieldset>
-    <legend><%= controller.action_name.capitalize %> Manager Purchase</legend>
 
 
-    <%= f.input :item_id, as: :hidden, input_html: { value: params[:town_id] } %>
-
-    <%= f.input :item_id, collection: Item.active.to_a, include_blank: true, input_html: {class: "avg"} %>
+    <%= f.input :item_id, as: :hidden, input_html: { value: params[:item_id] } %>
     <%= f.input :quantity, input_html: {class: "avg"} %>
 
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'button radius' %>
-      <%= link_to 'Cancel', purchases_path, :class => 'button alert radius' %>
+      <%= link_to 'Cancel', home_path, :class => 'button alert radius' %>
     </div>
-  </fieldset>
+
 <% end %>
