@@ -41,8 +41,6 @@ class OrdersController < ApplicationController
 			end
 		end
 
-
-
 		@order = Order.new(school_id: params[:order][:school_id], user_id: current_user.id, credit_card_number: params[:order][:credit_card_number], expiration_year: params[:order][:expiration_year].to_i, expiration_month: params[:order][:expiration_month].to_i) 
 
 		# Do grandtotal (oh and shipping) and payment receipt 

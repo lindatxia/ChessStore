@@ -8,7 +8,7 @@ class PurchasesController < ApplicationController
 
   def new
     @purchase = Purchase.new
-
+    @item_id = params[:item_id]
   end
 
   def create

@@ -15,7 +15,6 @@
 				<p> &nbsp;&nbsp; </p>
 	<% else %> 
 
-
 			<h5 class="heading"> 
 				Reorder List
 			</h5>
@@ -29,13 +28,17 @@
 					<div class="card-stacked">
 						<div class="card-content">
 
-						<div id="this_reorder_item">
+						
 							<% if i.reorder? == true %> 
 								<p class="link text">
 								<%= link_to i.name, item_path(i.id) %> <br/>
 								Inventory: <%= i.inventory_level%> <br/>
 								Reorder: <%= i.reorder_level%> <br/> <br/>
+
+								<div id="this_reorder_item_<%=i.id%>">
 								 <button class="waves-effect waves-light btn acc"><%= link_to("Reorder", new_purchase_path(item_id: i.id), remote: true) %></button>
+								</div>
+
 								</p>
 							<% end %>
 					
@@ -45,7 +48,7 @@
 
 				</div> <!-- Closed card horizontal -->
 
-				</div>
+				
 			<% end %>
 
 		<% end %>
