@@ -60,16 +60,15 @@
 
 				
 				<li id="special-icon"> 
-					<div class="avatar prefix left">
-					<% if current_user.picture? %> 
-			 			<%= image_tag(current_user.picture_url, class:"circle icon", size:"40x40") %>
-
-			 		<% else %> 
-			 			<%= image_tag "missing_pic.png", class: "circle icon", size: "40x40"%>
-			 		<% end %> 
-			 		</div>
 					<a class="dropdown-button" href="#!" data-activates="dropdown_profile">
-						&nbsp;&nbsp;Welcome, <%= current_user.first_name%> 
+						<div class="avatar left">
+							<% if current_user.picture? %> 
+								<%= image_tag(current_user.picture_url, class:"circle icon", size:"40x40") %>
+							<% else %> 
+								<%= image_tag "missing_pic.png", class: "circle icon", size: "40x40"%>
+							<% end %> 
+			 			</div>
+						&nbsp;Welcome, <%= current_user.first_name%> 
 						<i class="material-icons right">arrow_drop_down</i>
 					</a>
 				</li>
