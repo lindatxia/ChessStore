@@ -36,23 +36,26 @@
 				<% if current_user.role == "admin" || current_user.role == "manager" %>
 
 					<li><%= link_to schools_path do %> 
-					<i class="small material-icons prefix left">store</i> All Schools&nbsp;&nbsp; 
+					<i class="small material-icons prefix left">location_city</i> All Schools&nbsp;&nbsp; 
 						<% end %>
+
 
 					</li>
 
 					<li> 
-
+					<%= link_to users_path do %> 
+							<i class="small material-icons prefix left">supervisor_account</i> All Users&nbsp;&nbsp; 
+						 <% end %> 
 
 					</li>
 				<% end %>
 
 				<li><%= link_to cart_path do %> 
-					<i class="small material-icons prefix left">shopping_cart</i> Cart&nbsp;&nbsp; 
+					<i class="small material-icons prefix left">shopping_cart</i> My Cart&nbsp;&nbsp; 
 					<% if @cart.size > 0 %> 
 						<span class="new badge" data-badge-caption=""><%= @cart.size %></span>
 					<% end %>
-					<%end%>
+					<% end %>
 				</li>
 
 				<li><a class="dropdown-button" href="#!" data-activates="dropdown_profile">Welcome, <%= current_user.first_name%> <i class="material-icons right">arrow_drop_down</i></a></li>
