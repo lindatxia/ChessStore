@@ -1,0 +1,27 @@
+<ul class="collection">
+  	<% user.each do |u| %> 
+	  	
+	    <li class="collection-item avatar">
+	 
+	 		<% if u.picture? %> 
+	 			<%= image_tag(u.picture_url, :class => "circle") %>
+
+	 		<% else %> 
+	 			<%= image_tag "missing_pic.png", :class => "circle" %>
+	 		<% end %> 
+	       
+	      <p class="collapsible-text"> 
+
+	      	<%= u.proper_name.upcase %> <br/> 
+	      	<%= u.role.capitalize %> <br/>
+	      	<%= u.phone %> 
+	      </p>
+	      
+	      
+	      <%= link_to user_path(u.id) do %> <i class="material-icons secondary-content">info_outline</i> <% end %>
+	     
+	    </li>
+	  	
+
+	<% end %>
+</ul>
