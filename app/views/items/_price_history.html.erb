@@ -1,14 +1,19 @@
-<% unless @price_history.empty? %>
-  <div class="panel clearfix">
-    <h3 class="heading">Price History</h3>
-    <ul class="text">
-      <% @price_history.each do |change| %>
-        <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />
-      <% end %>
-    </ul>
+<div id="price_hist">
+  <% unless @price_history.empty? %>
+    <div class="panel clearfix">
+      <h3 class="heading">Price History</h3>
+      <ul class="text">
+        <% @price_history.each do |change| %>
+          <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />
+        <% end %>
+      </ul>
 
-    <p class="text">
-    <%= link_to("Change Price", new_item_price_path(this_item_id: @item.id), class: 'button tiny radius',remote: true) %>
-    </p>
-  </div>
-<% end %>
+      <div id="this_item_price_<%=@item.id%>">
+          <button class="waves-effect waves-light btn acc">
+            <%= link_to("Change Price", new_item_price_path(item_id: @item.id), class: 'button tiny radius',remote: true) %>
+          </button>
+      </div>
+
+
+  <% end %>
+</div>

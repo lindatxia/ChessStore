@@ -14,9 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # unless can? :read, Item
-    #   redirect_to jail
-    # end 
+  
 
     # get the price history for this item
     @price_history = @item.item_prices.chronological.to_a
