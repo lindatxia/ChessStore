@@ -1,52 +1,86 @@
-<% if @reorder_items.empty? %> 
 
-	<p class="text">
-		There are no items at this time to reorder. Nice! 
-	</p>
-	<p> &nbsp;&nbsp; </p>
-	<p> &nbsp;&nbsp; </p>
-	<p> &nbsp;&nbsp; </p>
-	<p> &nbsp;&nbsp; </p>
-	<p> &nbsp;&nbsp; </p>
-	<p> &nbsp;&nbsp; </p>
-	<p> &nbsp;&nbsp; </p>
-	<p> &nbsp;&nbsp; </p>
-	<p> &nbsp;&nbsp; </p>
+<div class="row">
+	<div class="col s2">
+	</div>
+	<div class="col s5">
 
-<% else %> 
+		<% if @reorder_items.empty? %> 
 
-<div class="col s12 collection">
-	<% @reorder_items.each do |i| %> 
+			<p class="text">
+				There are no items at this time to reorder. Nice! 
+			</p>
+			<p> &nbsp;&nbsp; </p>
+			<p> &nbsp;&nbsp; </p>
+			<p> &nbsp;&nbsp; </p>
+			<p> &nbsp;&nbsp; </p>
+			<p> &nbsp;&nbsp; </p>
+			<p> &nbsp;&nbsp; </p>
+			<p> &nbsp;&nbsp; </p>
+			<p> &nbsp;&nbsp; </p>
+			<p> &nbsp;&nbsp; </p>
 
-		<div class="card horizontal">
-		<div class="card-image">
-			<%= image_tag('img_not_available.png', border:0, size: "150x150")%>
-		</div>
+		<% else %> 
 
-		<div class="card-stacked">
-			<div class="card-content">
-			<% if i.reorder? == true %> 
-				<p class="text">
-				<%= link_to i.name, item_path(i.id) %> <br/>
-				<%= i.inventory_level%> <br/>
-				 <button class="waves-effect waves-light btn acc"><%= link_to("Reorder", new_purchase_path(item_id: i.id), remote: true) %></button>
-				</p>
-			<% end %>
-			
-			</div>
 
-		</div>
+
+		<h5 class="heading"> 
+			Reorder List
+		</h5>
+
+		<% @reorder_items.each do |i| %> 
+
+			<div class="card horizontal smaller">
+
+				<div class="card-stacked">
+					<div class="card-content">
+					<% if i.reorder? == true %> 
+						<p class="link text">
+						<%= link_to i.name, item_path(i.id) %> <br/>
+						Inventory: <%= i.inventory_level%> <br/>
+						Reorder: <%= i.reorder_level%> <br/> <br/>
+						 <button class="waves-effect waves-light btn acc"><%= link_to("Reorder", new_purchase_path(item_id: i.id), remote: true) %></button>
+						</p>
+					<% end %>
+				
+					</div> <!-- Close card content --> 
+
+				</div> <!-- Close card-stacked --> 
+
+			</div> <!-- Closed card horizontal -->
+		<% end %>
+	</div> <!-- Close col s5-->
+
+	<div class="col s4 offset-s1">
+
+		<h5 class="heading"> 
+			Recent Orders
+		</h5>
+
+		<% @recent_orders.each do |o| %> 
+			<div class="card horizontal smaller">
+
+				<div class="card-stacked">
+					<div class="card-content">
+					
+						<p class="link text">
+						Order ID: <%= o.id %> <br/>
+						Customer: <%= o.user.proper_name%> <br/>
+						Date Placed: <%= o.date %> <br/> <br/>
+						</p>
+				
+				
+					</div> <!-- Close card content --> 
+
+				</div> <!-- Close card-stacked --> 
+
+			</div> <!-- Closed card horizontal -->
+
+		<% end %>
 
 	</div>
 
 
-	
-	<% end %>
-</div>
-
-
-
-
-
-
 <% end %>
+
+</div>
+</div>

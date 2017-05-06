@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 		if logged_in?
 			@reorder_items = Item.need_reorder.alphabetical.to_a
 			@orders = Order.all.not_shipped.chronological.to_a
+			@recent_orders = Order.all.chronological.first(5).to_a
 		end
 	end
 
