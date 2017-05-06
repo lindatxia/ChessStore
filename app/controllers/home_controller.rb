@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
 	def home
 		if logged_in?
-			@items_to_reorder = Item.need_reorder.alphabetical.to_a
+			@reorder_items = Item.need_reorder.alphabetical.to_a
 			@orders = Order.all.not_shipped.chronological.to_a
 		end
 	end
@@ -47,5 +47,10 @@ class HomeController < ApplicationController
 		# redirect_to home_path
 	end
 
+	# For managers to easily remove items they've reordered via AJAX.
+	def remove_from_reorder_list
+		Item.where(id: params[:i_id]).first
+		@reorder_items = Item.all.need_reorder.alphabetical.to_a
+	end
   
 end

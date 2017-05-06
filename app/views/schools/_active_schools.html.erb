@@ -1,0 +1,27 @@
+<% if school.empty? %> 
+
+	<p class="text"> There are no relevant schools at this time. </p>
+
+<% else %>
+
+<% school.each do |a| %> 
+	<div class="col s12">
+		<div class="card horizontal">
+			<div class="card-stacked">
+				<div class="card-content">
+					
+					<p class="text">
+						School: <%= a.name %> <br/>
+						Address: <%= a.street_1 %> <%=a.city%> <%=a.state%> <%=a.zip%>
+					</p>
+
+					<br/>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+<% end %> 
+<% end %>

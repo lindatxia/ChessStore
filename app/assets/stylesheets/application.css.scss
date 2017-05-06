@@ -201,11 +201,6 @@ label {
   
 }
 
-.carousel.carousel-slider {
-  width: 115%;
-  height: 115%;
-
-}
 
 .card.horizontal { 
   box-shadow: 0 0.5px 1px 0 rgba(0,0,0,0.2), 0 0.5px 6px 0 rgba(0,0,0,0.02), 0 3px 1px -2px rgba(0,0,0,0.2);
@@ -258,7 +253,7 @@ label {
   
 }
 
-.collapsible{ 
+.collapsible { 
   box-shadow: 0 0.5px 1px 0 rgba(0,0,0,0.2), 0 0.5px 6px 0 rgba(0,0,0,0.02), 0 3px 1px -2px rgba(0,0,0,0.2) !important;
 }
 
@@ -276,4 +271,15 @@ nav {
 
 .tabs .tab a{
   color: #26a69a !important;
+}
+
+.btn.waves-effect.white.grey-text.darken-text-2.left.first
+{
+  margin-top: 200px;
+  margin-left: 70px;
+}
+
+#banner img {
+  height: 350px;
+  width:auto;
 }

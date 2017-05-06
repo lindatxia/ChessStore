@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require jquery_nested_form
 //= require_tree .
 
@@ -21,12 +20,7 @@ $(document).ready(function() {
 	$('.collapsible').collapsible();
 	$('select').material_select();
 
-	$('.carousel.carousel-slider').carousel({fullWidth: true, padding:200},setTimeout(autoplay, 4500));
-
-	function autoplay() {
-		$('.carousel').carousel('next');
-		setTimeout(autoplay, 4500);
-	}
+	$('.carousel.carousel-slider').carousel();
 
 	$('ul.tabs').tabs();
 

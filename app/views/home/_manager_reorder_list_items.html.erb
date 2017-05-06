@@ -1,0 +1,52 @@
+<% if @reorder_items.empty? %> 
+
+	<p class="text">
+		There are no items at this time to reorder. Nice! 
+	</p>
+	<p> &nbsp;&nbsp; </p>
+	<p> &nbsp;&nbsp; </p>
+	<p> &nbsp;&nbsp; </p>
+	<p> &nbsp;&nbsp; </p>
+	<p> &nbsp;&nbsp; </p>
+	<p> &nbsp;&nbsp; </p>
+	<p> &nbsp;&nbsp; </p>
+	<p> &nbsp;&nbsp; </p>
+	<p> &nbsp;&nbsp; </p>
+
+<% else %> 
+
+<div class="col s12 collection">
+	<% @reorder_items.each do |i| %> 
+
+		<div class="card horizontal">
+		<div class="card-image">
+			<%= image_tag('img_not_available.png', border:0, size: "150x150")%>
+		</div>
+
+		<div class="card-stacked">
+			<div class="card-content">
+			<% if i.reorder? == true %> 
+				<p class="text">
+				<%= link_to i.name, item_path(i.id) %> <br/>
+				<%= i.inventory_level%> <br/>
+				 <button class="waves-effect waves-light btn acc"><%= link_to("Reorder", new_purchase_path(item_id: i.id), remote: true) %></button>
+				</p>
+			<% end %>
+			
+			</div>
+
+		</div>
+
+	</div>
+
+
+	
+	<% end %>
+</div>
+
+
+
+
+
+
+<% end %>

@@ -28,10 +28,24 @@
 				<% if logged_in? && current_user.role == "customer" %> 
 
 					<li> 
-						<%= link_to "My Orders", orders_path%>
+						<%= link_to "My Orders", orders_path %>
 					</li>
 
 				<% end %> 
+
+				<% if current_user.role == "admin" || current_user.role == "manager" %>
+
+					<li><%= link_to schools_path do %> 
+					<i class="small material-icons prefix left">store</i> All Schools&nbsp;&nbsp; 
+						<% end %>
+
+					</li>
+
+					<li> 
+
+
+					</li>
+				<% end %>
 
 				<li><%= link_to cart_path do %> 
 					<i class="small material-icons prefix left">shopping_cart</i> Cart&nbsp;&nbsp; 

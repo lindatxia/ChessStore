@@ -1,0 +1,22 @@
+<div id="manager_item_details">
+<div class="card horizontal">
+		<div class="card-image">
+			<%= image_tag('img_not_available.png', border:0, size: "150x150")%>
+		</div>
+
+		<div class="card-stacked">
+			<div class="card-content">
+			<% if reorder == true %> 
+				<p class="text">
+				<%= link_to item_name, item_path(item_id) %> <br/>
+				<%= inv %> <br/>
+				 <button class="waves-effect waves-light btn acc"><%= link_to("Reorder", new_purchase_path(item_id: item_id), remote: true) %></button>
+				</p>
+			<% end %>
+			
+			</div>
+
+		</div>
+
+	</div>
+</div>
