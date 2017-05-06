@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   get 'add_to_cart/:item_id' => 'orders#add_to_cart', :as => :add_to_cart
   get 'remove_from_cart/:item_id' => 'orders#remove_from_cart', :as => :remove_from_cart
+  
   get 'remove_from_shipping_list/:oi_id' => 'home#remove_from_shipping_list', :as => :remove_from_shipping_list
   get 'remove_from_reorder_list/:i_id' => 'home#remove_from_reorder_list', :as => :remove_from_reorder_list
 

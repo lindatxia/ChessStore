@@ -1,6 +1,6 @@
 <div id="reorder_items">
 
-	<% if reorder.empty? %> 
+	<% if @reorder_items.empty? %> 
 		<p class="text">
 			There are no items at this time to reorder. Nice! 
 		</p>
@@ -20,7 +20,7 @@
 				Reorder List
 			</h5>
 
-			<% reorder.each do |i| %> 
+			<% @reorder_items.each do |i| %> 
 
 			
 
