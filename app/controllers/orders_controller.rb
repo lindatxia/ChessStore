@@ -29,8 +29,11 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new
 		# Dropdown stuff
+		# If school_is supplied and legit
 		if params[:order][:school_id]
 			@order.school_id = params[:order][:school_id]
+
+		# Otherwise, school is not supplied, so you make a new one.
 		else 
 			@school = School.new(name: params[:order][:school_name], street_1: params[:order][:school_street_1], street_2: params[:order][:school_street_2], city: params[:order][:school_city], state: params[:order][:school_state], zip: params[:order][:school_zip], min_grade: params[:order][:school_min_grade], max_grade: params[:order][:school_max_grade])
 			if @school.save!
@@ -43,14 +46,14 @@ class OrdersController < ApplicationController
 
 		@order = Order.new(school_id: params[:order][:school_id], user_id: current_user.id, credit_card_number: params[:order][:credit_card_number], expiration_year: params[:order][:expiration_year].to_i, expiration_month: params[:order][:expiration_month].to_i) 
 
-		# Do grandtotal (oh and shipping) and payment receipt 
+		# Do grandtotal, shiping and payment receipt 
 		@subtotal = calculate_cart_items_cost
 		@order.grand_total = calculate_cart_shipping + @subtotal
 
 		if @order.save!
 			# Pay for the order
 			@order.pay
-			# Clear the cart after you pay and the order saves
+			save_each_item_in_cart(@order)
 			clear_cart
 			return redirect_to order_path(@order), notice: "Successfully created order" 
 		else 
