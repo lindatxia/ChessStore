@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'chart-js-rails'
+gem 'momentjs-rails'
 
 gem 'mini_magick', '~> 4.3'
 

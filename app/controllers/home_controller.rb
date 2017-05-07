@@ -5,6 +5,24 @@ class HomeController < ApplicationController
 			@reorder_items = Item.need_reorder.alphabetical.to_a
 			@orders = Order.all.not_shipped.chronological.to_a
 			@recent_orders = Order.all.chronological.first(5).to_a
+
+			@items = Item.all.alphabetical.to_a
+			@item_names = Array.new
+			@quantity = Array.new
+
+			@items.map do |i| 
+				sum = 0
+				i.order_items.each do |oi|
+					sum += oi.quantity
+				end
+				@quantity << sum
+			end
+
+			@items.map do |i| 
+				@item_names << i.name
+			end
+
+
 		end
 	end
 

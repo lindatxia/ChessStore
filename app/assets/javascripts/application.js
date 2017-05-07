@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require_tree .
+//= require Chart 
+//= require moment
 
 
 $(document).ready(function() {
