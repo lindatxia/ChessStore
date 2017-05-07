@@ -1,6 +1,7 @@
 	<% if current_user && current_user.role?(:admin) %> 
 		<%= render :partial => 'admin_cards' %>
 		<%= render :partial => 'admin_chart' %>
+		<%= render :partial => 'manager_home'%>
 
 	<% elsif (current_user && current_user.role?(:customer))%> 
 		<%= render :partial => 'carousel' %>

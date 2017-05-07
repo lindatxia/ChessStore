@@ -1,7 +1,12 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :check_login, except: [:index, :show] # Is this right? Should I add more?
+  
+
+  autocomplete :item, :name, :limit => 10, :full=>true, :scopes => [:active]
+  before_action :check_login, except: [:index, :show]
   authorize_resource
+
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  
 
   def index
     # get info on active items for the big three...
@@ -14,8 +19,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-  
-
     # get the price history for this item
     @price_history = @item.item_prices.chronological.to_a
     # everyone sees similar items in the sidebar

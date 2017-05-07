@@ -20,11 +20,13 @@
 					
 						<p class="link text">
 							
-							Lol, more things here later.
-
+							<%= form_for @purchase do |f| %>
+  								<%= f.hidden_field :item_id, id: "item_id"%>
+  								<%= f.autocomplete_field :item_id, autocomplete_item_path %>
+  								<input data-autocomplete="/autocomplete_item" type="text" data-id-element="#item_id">
+							<% end%>
 						</p>
 				
-					
 					</div> <!-- Close card content --> 
 
 				</div> <!-- Close card-stacked --> 

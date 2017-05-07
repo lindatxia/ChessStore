@@ -2,6 +2,7 @@
 
     <%= f.input :item_id, as: :hidden, input_html: { value: params[:item_id] } %>
     <%= f.input :quantity, input_html: {class: "avg"} %>
+    <%= f.autocomplete_field :item_name, autocomplete_item_name_purchases_path %>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'button radius' %>

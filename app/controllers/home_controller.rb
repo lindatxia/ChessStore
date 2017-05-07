@@ -22,6 +22,7 @@ class HomeController < ApplicationController
 				@item_names << i.name
 			end
 
+			@purchase = Purchase.new
 
 		end
 	end

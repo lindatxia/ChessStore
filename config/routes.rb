@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   resources :sessions
   resources :orders
   resources :schools
-  
 
+  get 'autocomplete_item' => 'items#autocomplete_item_name'
+  
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
   get 'about' => 'home#about', as: :about
