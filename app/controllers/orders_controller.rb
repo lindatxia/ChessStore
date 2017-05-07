@@ -69,12 +69,12 @@ class OrdersController < ApplicationController
 
 	def add_to_cart
 		add_item_to_cart(params[:item_id])
-		redirect_to orders_path
+		redirect_to(:back)
 	end
 
 	def remove_from_cart
 		remove_item_from_cart(params[:item_id])
-		redirect_to orders_path
+		redirect_to(:back)
 	end
 
 	def destroy 

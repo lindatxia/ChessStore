@@ -1,6 +1,8 @@
 <%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
+  
     <legend><%= controller.action_name.capitalize %> Order </legend>
+
 
     <%= f.input :school_id, as: :select, :collection => School::SCHOOL_LIST, :prompt => true, class: 'dropdown-content' %>
 
@@ -11,9 +13,8 @@
 
     <div id="school_form">
     
-      
       <%= f.input :school_name %> 
-
+      
       <%= f.input :school_street_1 %> 
 
       <%= f.input :school_street_2 %> 
@@ -23,7 +24,6 @@
       <%= f.input :school_state %> 
 
       <%= f.input :school_city %> 
-
       
   </div>
 
@@ -37,7 +37,6 @@
       <%= f.submit nil, :class => 'button radius' %>
       <%= link_to 'Cancel',orders_path, :class => 'button alert radius' %>
     </div>
-
 
   </fieldset>
 <% end %>
