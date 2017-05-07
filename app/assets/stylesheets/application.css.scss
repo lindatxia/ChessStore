@@ -301,3 +301,11 @@ nav {
 .select-dropdown { 
   overflow-y: auto !important;
 }
+
+#dropdown_profile {
+  top: inherit !important;
+}
+
+select {
+  display: block !important;
+}

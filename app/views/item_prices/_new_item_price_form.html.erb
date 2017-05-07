@@ -2,6 +2,7 @@
 
 	<%= f.input :item_id, as: :hidden, input_html: { value: params[:item_id] } %>
 	<%= f.input :price, label: "Item Price", input_html: {class: "avg"} %>
+	
 	<%= f.input :category, as: :select, :collection => ItemPrice::CATEGORIES, :prompt => true, class: 'dropdown-content'%>
  
   <div class="form-actions">

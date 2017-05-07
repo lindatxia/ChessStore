@@ -17,7 +17,7 @@
 
 
 $(document).ready(function() {
-	$(".dropdown-button").dropdown({belowOrigin:true});
+	$('.dropdown-button').dropdown({belowOrigin:true});
 	$('.collapsible').collapsible();
 	$('select').material_select();
 
