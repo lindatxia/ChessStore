@@ -20,8 +20,15 @@
 					
 						<p class="link text">
 							
-							<%= simple_form_for @purchase do |f| %>
+
+							<%= simple_form_for @item_price do |f| %>
   								<%= f.input :item_id, as: :select, :collection => @items, :prompt => true, class: 'dropdown-content' %>
+  								<%= f.input :price, label: "Item Price", input_html: {class: "avg"} %>
+  								<%= f.input :category, as: :select, :collection => ItemPrice::CATEGORIES, :prompt => true, class: 'dropdown-content'%>
+  								<div class="form-actions">
+								    <%= f.submit nil, class: 'button tiny radius' %>
+								    <%= link_to 'Cancel', home_path, class: 'button tiny radius alert' %>
+	  							</div>
 							<% end%>
 
 						</p>

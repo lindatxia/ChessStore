@@ -23,6 +23,7 @@ class HomeController < ApplicationController
 			end
 
 			@purchase = Purchase.new
+			@item_price = ItemPrice.new
 
 		end
 	end
