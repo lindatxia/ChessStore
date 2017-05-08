@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   
-
+  
   autocomplete :item, :name, :limit => 10, :full=>true, :scopes => [:active]
+  
   before_action :check_login, except: [:index, :show]
   authorize_resource
 

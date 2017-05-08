@@ -12,6 +12,7 @@
  *
  *= require_self
  *= require simple_form
+ *= require jquery.ui.all
  */
  
 
@@ -304,8 +305,4 @@ nav {
 
 #dropdown_profile {
   top: inherit !important;
-}
-
-select {
-  display: block !important;
 }

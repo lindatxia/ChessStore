@@ -20,11 +20,10 @@
 					
 						<p class="link text">
 							
-							<%= form_for @purchase do |f| %>
-  								<%= f.hidden_field :item_id, id: "item_id"%>
-  								<%= f.autocomplete_field :item_id, autocomplete_item_path %>
-  								<input data-autocomplete="/autocomplete_item" type="text" data-id-element="#item_id">
+							<%= simple_form_for @purchase do |f| %>
+  								<%= f.input :item_id, as: :select, :collection => @items, :prompt => true, class: 'dropdown-content' %>
 							<% end%>
+
 						</p>
 				
 					</div> <!-- Close card content --> 
@@ -32,9 +31,6 @@
 				</div> <!-- Close card-stacked --> 
 
 		</div> <!-- Closed card horizontal -->
-
-
-
 
 		<h5 class="heading"> 
 			Recent Orders

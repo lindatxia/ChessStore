@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'chart-js-rails'
 gem 'momentjs-rails'
-gem 'rails4-autocomplete'
+gem 'rails-jquery-autocomplete'
 
 gem 'mini_magick', '~> 4.3'
 

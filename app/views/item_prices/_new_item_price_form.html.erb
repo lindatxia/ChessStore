@@ -1,12 +1,14 @@
-<%= simple_form_for @item_price, html: { :class => 'form-horizontal' }, remote: true do |f| %>
+<div id="item_price_form">
+	<%= simple_form_for @item_price, html: { :class => 'form-horizontal' }, remote: true do |f| %>
 
-	<%= f.input :item_id, as: :hidden, input_html: { value: params[:item_id] } %>
-	<%= f.input :price, label: "Item Price", input_html: {class: "avg"} %>
-	
-	<%= f.input :category, as: :select, :collection => ItemPrice::CATEGORIES, :prompt => true, class: 'dropdown-content'%>
- 
-  <div class="form-actions">
-    <%= f.submit nil, class: 'button tiny radius' %>
-    <%= link_to 'Cancel', item_path(params[:item_id]), class: 'button tiny radius alert' %>
-  </div>
-<% end %>
+		<%= f.input :item_id, as: :hidden, input_html: { value: params[:item_id] } %>
+		<%= f.input :price, label: "Item Price", input_html: {class: "avg"} %>
+		
+		<%= f.input :category, as: :select, :collection => ItemPrice::CATEGORIES, :prompt => true, class: 'dropdown-content'%>
+	 
+	  <div class="form-actions">
+	    <%= f.submit nil, class: 'button tiny radius' %>
+	    <%= link_to 'Cancel', item_path(params[:item_id]), class: 'button tiny radius alert' %>
+	  </div>
+	<% end %>
+</div>

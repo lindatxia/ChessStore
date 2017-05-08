@@ -1,1 +1,4 @@
 $('#this_reorder_item_<%=@item_id%>').replaceWith('<%= j render("new_purchase_form") %>');
+$('#purchase_form').ready(function() {
+	$('select').material_select();
+});

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
   # Routes for main resources
-  resources :items
+  resources :items do 
+    get :autocomplete_item_name, :on => :collection
+  end 
   resources :purchases
   resources :item_prices
 
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :schools
 
-  get 'autocomplete_item' => 'items#autocomplete_item_name'
+  # get 'autocomplete_item' => 'items#autocomplete_item_name'
   
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
