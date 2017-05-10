@@ -308,6 +308,24 @@ nav {
 }
 
 canvas#myChart{
-  width: 500px !important;
-  height: auto !important;
+  width: 480px !important;
+  height: 450px !important;
+}
+
+#card_heading {
+  font-size: 3em;
+  display: inline;
+}
+
+.card-panel teal {
+  display: inline !important;
+  text-align: center !important;
+}
+
+.caption {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 100;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  color: #696969;
 }

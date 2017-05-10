@@ -11,13 +11,14 @@ class HomeController < ApplicationController
 			@quantity = Array.new
 
 			@last5days = (5.days.ago.to_date..Date.current).map{|date| date.strftime("%b %d")}
-			@order_count = Array.new
+			@order_count = 0
 			@revenue = Array.new
+			@total_earned = 0
 
 			# For each of the last seven days...
 			(5.days.ago.to_date..Date.current).each do |i| 
 				@all_orders_on_this_date = Order.all.where(date: i)
-				@order_count << @all_orders_on_this_date.count 
+				@order_count += @all_orders_on_this_date.count
 
 				# Earned revenue refreshes every day
 				@earned = 0
@@ -31,6 +32,7 @@ class HomeController < ApplicationController
 
 						# How much earned from THIS order item...
 						@earned += (@customer_total - @manufacturer_total)
+						@total_earned += @earned
 						
 					end
 
