@@ -16,6 +16,7 @@ class HomeController < ApplicationController
 			@total_earned = 0
 
 			@customers = User.all.alphabetical.customers.limit(5)
+			@active_customers = User.all.alphabetical.active.to_a
 
 			# For each of the last seven days...
 			(4.days.ago.to_date..Date.current).to_a.each do |i| 
