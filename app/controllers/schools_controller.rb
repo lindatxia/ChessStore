@@ -3,8 +3,8 @@ class SchoolsController < ApplicationController
 	authorize_resource
 
 	def index 
-		@active_schools = School.all.active.alphabetical.to_a
-		@inactive_schools = School.all.inactive.alphabetical.to_a
+		@active_schools = School.all.active.alphabetical.paginate(:page => params[:page]).per_page(10)
+		@inactive_schools = School.all.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
 	end
 
 	def new 

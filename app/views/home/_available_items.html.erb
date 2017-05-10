@@ -12,7 +12,7 @@
 		<div class="card-stacked">
 			<div class="card-content">
 				<h5 class="heading"> 
-					<div class="link">
+					<div class="link text big">
 					<%= link_to item.name, item_path(item) %>
 					</div>
 				</h5>
@@ -22,7 +22,7 @@
 				</h5>
 
 				<p class="text">
-					Get it on or before <%= 4.days.from_now.strftime("%m/%d/%y") %>
+					Get it on or before <%= 4.days.from_now.strftime("%m/%d/%y") %> <br/>
 					<% if logged_in? && current_user.role != "customer" %>
             			Inventory level: <%= item.inventory_level %>
             		<% end %>
