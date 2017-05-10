@@ -40,5 +40,8 @@ Rails.application.routes.draw do
 
   # Set the root url
   root :to => 'home#home'  
+  
+  # Last route in routes.rb that essentially handles routing errors
+  get '*a', to: 'errors#routing'
 
 end
