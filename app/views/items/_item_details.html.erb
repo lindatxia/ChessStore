@@ -21,7 +21,7 @@
 
      <% if logged_in?%>
         <p class="link text">
-          <%= link_to("Add to Cart", add_to_cart_path(@item.id), class: 'button tiny radius') %>
+          <%= link_to("Buy", add_to_cart_path(@item.id), class: 'button tiny radius') %>
           &nbsp;&nbsp; | &nbsp;&nbsp;
           <% if current_user.role == "manager" || current_user.role == "admin" %> 
 
@@ -41,7 +41,7 @@
 
       <% else %> 
         <p class="link text">
-          <%= link_to("Add to Cart", login_path, class: 'button tiny radius') %>
+          <%= link_to("Buy", login_path, class: 'button tiny radius') %>
         </p>
 
       <% end %>
