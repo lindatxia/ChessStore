@@ -60,15 +60,13 @@
                         <%= image_tag "missing_pic.png", :class => "circle" %>
                     <% end %> 
                    
-                  <p class="collapsible-text"> 
+                  <p class="collapsible-text link text"> 
 
-                    <%= u.proper_name.upcase %> <br/>
+                    <%= link_to u.proper_name.upcase, user_path(u.id)%> <br/>
                     <%= u.phone %> 
                   </p>
                   
                   
-                  <%= link_to user_path(u.id) do %> <i class="material-icons secondary-content">info_outline</i> <% end %>
-                 
                 </li>
                 
 

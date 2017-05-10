@@ -16,7 +16,7 @@
 	       
 	      <p class="collapsible-text"> 
 
-	      	<%= u.proper_name.upcase %> <br/>
+	      	<%= link_to u.proper_name.upcase, user_path(u.id) %> <br/>
 	      	<%= u.phone %> 
 	      </p>
 	      
