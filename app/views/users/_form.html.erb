@@ -52,9 +52,11 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <div class="field" id = "role">
-    <%= f.input(:role, as: :select, collection: User::ROLES)%>
-  </div>
+  <% if logged_in? && current_user.role == "admin" %> 
+    <div class="field" id = "role">
+      <%= f.input(:role, as: :select, collection: User::ROLES)%>
+    </div>
+  <% end %>
 
   <div class="field"> 
     <%= f.label :picture %><br /> 
