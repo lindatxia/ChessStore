@@ -1,6 +1,6 @@
 class ItemPricesController < ApplicationController
   authorize_resource
-  before_action :check_login, except: [:index, :show]
+  before_action :check_login
   
   def index
     @active_items = Item.active.alphabetical.to_a

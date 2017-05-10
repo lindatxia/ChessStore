@@ -24,13 +24,14 @@ class ApplicationController < ActionController::Base
   def count_items_in_cart
     # The cart needs to exist first (when you log in, a cart is created)
     # This method is always running, so consider the exception when a guest customer is browsing the site.
-    
-    unless session[:cart].nil?
+    @cart = []
+    unless session[:cart].nil? #This is a guest
       @cart = get_list_of_items_in_cart
       @cart_subtotal = calculate_cart_items_cost
       @shipping = calculate_cart_shipping
       @cart_grandtotal = @shipping + @cart_subtotal
     end
+      
   end
 
   def current_user

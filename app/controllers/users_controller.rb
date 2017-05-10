@@ -61,11 +61,7 @@ private
     end
 
 	def user_params
-		if current_user && current_user.role?(:admin)
-			params.require(:user).permit(:first_name, :last_name, :username, :email, :picture, :phone, :password, :password_confirmation, :role, :active)  
-		else
-			params.require(:user).permit(:first_name, :last_name, :username, :email, :picture, :phone, :password, :password_confirmation, :active)
-		end
+		params.require(:user).permit(:first_name, :last_name, :username, :email, :picture, :phone, :password, :password_confirmation, :role, :active)  
 	end
 
 end

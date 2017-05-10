@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-	before_action :check_login
+	before_action :check_login, except: [:new, :create]
 	authorize_resource
 
 	def index 

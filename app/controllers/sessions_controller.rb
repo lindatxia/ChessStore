@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
 
       # FIRST THING, create a cart whenever the user logs in
       create_cart
-
       session[:user_id] = user.id
+  
       redirect_to home_path, notice: "Logged in!"
     else
       flash.now.alert = "Email or password is invalid"

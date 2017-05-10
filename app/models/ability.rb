@@ -47,7 +47,7 @@ class Ability
 				u.role?(:customer)
 			end
 			can :read, School
-			can :read, Order
+			can :manage, Order
 
 
 		elsif user.role? :shipper
@@ -62,7 +62,7 @@ class Ability
 			end
 
 			# 2. Can read information related to orders that need to be shipped 
-			can :read, Order
+			can :manage, Order
 
 			# 3. Can read information about items
 			can :read, Item
@@ -79,8 +79,7 @@ class Ability
 			end
 
 			# 2. Can place new orders and cancel unshipped orders
-			can :create, Order
-			can :destroy, Order
+			can :manage, Order
 
 			# 3. Can read info about items, but just not inventory or price history
 			can :read, Item
@@ -99,7 +98,6 @@ class Ability
 			can :read, Item
 			can :create, User 
 
-			# 2. Can add schools to the database
 
 		end
 

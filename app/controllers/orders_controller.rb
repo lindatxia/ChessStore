@@ -4,17 +4,27 @@ class OrdersController < ApplicationController
 
 	before_action :set_order, only: [:show, :destroy]
 	before_action :check_login, only: [:new, :create]
+	authorize_resource
 
 	def index 
-		if current_user.role?(:customer)
-			@orders = Order.all.order(id: :desc).where(user_id: current_user.id).paginate(:page => params[:page]).per_page(10)
-			@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.paginate(:page => params[:page]).per_page(10)
 
-		
+		# Only manager and admin can see this. 
+		if logged_in? 
+			if current_user.role == "customer"
+				@orders = Order.all.order(id: :desc).where(user_id: current_user.id).paginate(:page => params[:page]).per_page(10)
+				@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.paginate(:page => params[:page]).per_page(10)
+
+			elsif current_user.role == "manager" || current_user.role == "admin" 
+				@orders = Order.all.order(id: :desc).paginate(:page => params[:page]).per_page(10)
+				@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.paginate(:page => params[:page]).per_page(10)
+
+			else 
+				render file: 'errors/not_found'
+			end
+
+		# Otherwise you are a guest
 		else 
-			@orders = Order.all.order(id: :desc).paginate(:page => params[:page]).per_page(10)
-			@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.paginate(:page => params[:page]).per_page(10)
-		
+			render file: 'errors/not_found'
 		end
 	end
 
