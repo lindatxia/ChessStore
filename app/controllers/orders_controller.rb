@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
 		
 		else 
-			@orders = Order.all.chronological.to_a
+			@orders = Order.all.order(id: :desc).to_a
 			@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.to_a
 		
 		end
@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
 			# Save each item in the cart 
 			save_each_item_in_cart(@order)
 			clear_cart
-			return redirect_to order_path(@order), notice: "Successfully created order" 
+			return redirect_to orders_path, notice: "Successfully created order" 
 		else 
 			flash[:error] = "This order could not be created."
 			return render 'new'

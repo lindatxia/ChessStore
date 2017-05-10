@@ -10,7 +10,7 @@ class HomeController < ApplicationController
 			@item_names = Array.new
 			@quantity = Array.new
 
-			@last5days = (5.days.ago.to_date..Date.current).map{|date| date.strftime("%b %d")}
+			@last5days = (4.days.ago.to_date..Date.current).map{|date| date.strftime("%b %d")}
 			@order_count = 0
 			@revenue = Array.new
 			@total_earned = 0
@@ -18,7 +18,7 @@ class HomeController < ApplicationController
 			@customers = User.all.alphabetical.customers.limit(5)
 
 			# For each of the last seven days...
-			(5.days.ago.to_date..Date.current).each do |i| 
+			(4.days.ago.to_date..Date.current).to_a.each do |i| 
 				@all_orders_on_this_date = Order.all.where(date: i)
 				@order_count += @all_orders_on_this_date.count
 
@@ -29,15 +29,14 @@ class HomeController < ApplicationController
 
 					o.order_items.each do |oi|
 
-						@customer_total = oi.subtotal(i)
-						@manufacturer_total = oi.item.manufacturer_price_on_date(i)
+						@customer_total = oi.item.price_on_date(i) * oi.quantity
+						@manufacturer_total = oi.item.manufacturer_price_on_date(i) * oi.quantity
 
 						# How much earned from THIS order item...
 						@earned += (@customer_total - @manufacturer_total)
-						@total_earned += @earned
-						
-					end
 
+						@total_earned += @earned
+					end
 				end
 
 				@revenue << @earned

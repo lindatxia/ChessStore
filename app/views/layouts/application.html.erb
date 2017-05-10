@@ -18,6 +18,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
     
+
+    <script> 
+
+    setTimeout(function() {
+    $('#flash_text').fadeOut('fast');
+}, 3000);
+
+    </script>
+    
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,900' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -39,10 +48,10 @@
         </div>
         <div class="col s8">
         <%= render :partial => "partials/flash" %>
-        <%= yield %>
+        
         </div>
 
-        
+        <%= yield %>
     </div>
      
 
