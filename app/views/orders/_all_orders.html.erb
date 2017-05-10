@@ -22,13 +22,15 @@
 					<br/>
 
 
-					<p class="text">
+					<div class="link text">
 						<!-- For each order item in order... --> 
 						<% o.order_items.each do |oi| %> 
 
+							
 							<%= link_to oi.item.name, item_path(oi.item) %> 
 							<br/>
 							Quantity: <%= oi.quantity%>
+
 							<br/>
 							<br/>
 
@@ -38,10 +40,16 @@
 
 						
 						Grand Total: <%= number_to_currency(o.grand_total) %> <br/>
-						Order Placed: <%= o.date.strftime("%m/%d/%y") %> <br/>
+						Order Placed: <%= o.date.strftime("%m/%d/%y") %> <br/> <br/>
+
+						<button class="waves-effect waves-light btn acc">
+       
+
 
 						<%= link_to 'Cancel Order', order_path(o), method: :delete %>
-					</p>
+						    </button>
+					
+					</div>
 
 				</div>
 
