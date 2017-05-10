@@ -1,11 +1,49 @@
+<% unless @random.empty? %>
 <div class="row">
-	<div class="col s6 offset-s2"
+	<div class="col s10 offset-s2">
+
+	<div id="banner">
+		<%= image_tag("shoppieces.png") %>
+	</div>
+
+	<br/><br/>
+
+	<div id="subtext">
+	The Alex & Mark Chess Store is a wholesale chess store that sells directly to schools, founded by two chess-champion brothers with love for the sport.
+	<br/><br/> 
+
+	</div>
+
+	<h4 class="heading"> Curated for you </h4>
 
 
-		<h4 class="heading">Top Selling</h4>
+		<% @random.each do |item| %>
+	    
+	    	<div class="col s4 m4">
+	    		<div class="card">
+	    			<div class="card-image">
+	    				<%= image_tag('img_not_available.png', border:0)%>
+	        		</div>
+		        	<div class="card-content">
+
+		        	<h5 class="heading link text"> 
+		        		<%= link_to item.name, item_path(item) %>
+		        	</h5>
+
+		          	<p class="text">
+		          		<%= item.current_price.nil? ? "N/A" : number_to_currency(item.current_price) %>
+		          	</p>
+		       		</div>
+	      		</div>
+	    	</div>
+	  
+	  <% end %>
+
+	
 
 		
 	</div>
 </div>
+<% end %>
  
 

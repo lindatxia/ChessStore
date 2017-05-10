@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
 
 	def home
+		@random = Item.all.sample(6).to_a
 		if logged_in?
+
 			@reorder_items = Item.need_reorder.alphabetical.to_a
 			@orders = Order.all.not_shipped.chronological.to_a
 			@recent_orders = Order.all.chronological.first(5).to_a
@@ -62,6 +64,8 @@ class HomeController < ApplicationController
 
 		end
 	end
+
+
 
 	def about
 	end
