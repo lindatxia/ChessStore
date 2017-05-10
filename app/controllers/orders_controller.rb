@@ -83,8 +83,11 @@ class OrdersController < ApplicationController
 	end
 
 	def destroy 
-		@order.destroy
-		redirect_to orders_path, notice: "Successfully removed #{@order.id} from the system."
+		if @order.destroy
+			redirect_to orders_path, notice: "Successfully removed Order No. #{@order.id} from the system."
+		else 
+			redirect_to orders_path, notice: "Failed to remove Order No. #{@order.id} from the system. Some items have been shipped."
+		end
 	end
 
 private 
