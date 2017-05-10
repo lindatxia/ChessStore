@@ -2,30 +2,45 @@
     <div class="col s2">
     </div>
     <div class="col s8">
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="myChart" width="200" height="200"></canvas>
 
+<div id="chartjs1">
 <script>
+
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
-        labels: <%=raw(@item_names)%>,
+        labels: <%=raw(@last5days)%>,
         datasets: [{
-            label: 'Quantity',
-            data: <%=@quantity%>,
+            label: 'Revenue',
+            yAxisID: 'y-axis-1',
+            data: <%=raw(@revenue)%>,
+            borderColor: "rgba(0, 105, 92, 0.5)", 
+            backgroundColor: "rgba(255,255,255,0)", 
+            borderWidth: 3
         }]
     },
     options: {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
-                }
-            }]
+          beginAtZero: true
+        },
+            position: "left",
+            "id": "y-axis-1", 
+            scaleLabel: {
+        display: true,
+        labelString: 'Revenue in Dollars'
+      }
+          }]
+
         }
     }
 });
+
 </script>
+</div>
 
 </div>
 </div>

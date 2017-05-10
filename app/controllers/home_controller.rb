@@ -10,6 +10,40 @@ class HomeController < ApplicationController
 			@item_names = Array.new
 			@quantity = Array.new
 
+			@last5days = (5.days.ago.to_date..Date.current).map{|date| date.strftime("%b %d")}
+			@order_count = Array.new
+			@revenue = Array.new
+
+			# For each of the last seven days...
+			(5.days.ago.to_date..Date.current).each do |i| 
+				@all_orders_on_this_date = Order.all.where(date: i)
+				@order_count << @all_orders_on_this_date.count 
+
+				# Earned revenue refreshes every day
+				@earned = 0
+
+				@all_orders_on_this_date.each do |o| 
+
+					o.order_items.each do |oi|
+
+						@customer_total = oi.subtotal(i)
+						@manufacturer_total = oi.item.manufacturer_price_on_date(i)
+
+						# How much earned from THIS order item...
+						@earned += (@customer_total - @manufacturer_total)
+						
+					end
+
+				end
+
+				@revenue << @earned
+
+			end
+
+
+
+
+
 			@items.map do |i| 
 				sum = 0
 				i.order_items.each do |oi|
