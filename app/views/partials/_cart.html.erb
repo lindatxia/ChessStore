@@ -22,7 +22,7 @@
       <div class="card-stacked">
         <div class="card-content">
           <h5 class="heading">
-            <div class="link">
+            <div class="link text big">
               <%= link_to item.item.name, item_path(item.item) %>
             </div>
           </h5>
@@ -35,7 +35,7 @@
             Get it on or before <%= 4.days.from_now.strftime("%m/%d/%y") %>
             <br/> 
 
-            Quantity: <%= item.quantity %> 
+            Quantity: <%= item.quantity %> <br/>
 
             <% if logged_in? && current_user.role != "customer" %>
               Inventory level: <%= item.item.inventory_level %>
@@ -57,18 +57,22 @@
 
     <% end %>
 
-    <p class="text">
+    <p class="text right">
       Subtotal: <%= number_to_currency(@cart_subtotal) %> <br/>
       Shipping: <%= number_to_currency(@shipping) %> <br/>
       Grand total: <%= number_to_currency(@cart_grandtotal) %>
 
       <br/>
 
-
       <br/>
 
-      <%= link_to "Place an Order", new_order_path %> 
+       <button class="waves-effect waves-light btn acc">
+        <%= link_to "Checkout", new_order_path %> 
+      </button>
+      
     </p>
+
+   
 
   		
   	
