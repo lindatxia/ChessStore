@@ -1,3 +1,4 @@
+<% if logged_in? && (current_user.role != "customer" || current_user.role != "shipper") %> 
 <div class="row">
   <div class="col s2">
   </div>
@@ -21,7 +22,7 @@
 		<%= render partial: 'user_list', locals: {user: @customers} %>
 	</div>
 
-  
-
   </div>
  </div>
+
+<% end %>

@@ -6,9 +6,15 @@ class UsersController < ApplicationController
 	authorize_resource
 
 	def index
-		@users = User.all.alphabetical.paginate(:page => params[:page]).per_page(7)
-		@employees = User.all.alphabetical.employees
-		@customers = User.all.alphabetical.customers
+		# Only manager and admin can see this. 
+		if logged_in? == false || current_user.role == "customer" || current_user.role == "shipper" 
+			render file: 'errors/not_found'
+		else
+			@users = User.all.alphabetical.paginate(:page => params[:page]).per_page(7)
+			@employees = User.all.alphabetical.employees
+			@customers = User.all.alphabetical.customers
+		end
+		
 	end
 
 	def show 

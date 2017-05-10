@@ -8,9 +8,9 @@ class ErrorsController < ApplicationController
   
   def routing
     unless params[:a].nil?
-      logger.info "404 Error with: '#{params[:a]}'"
+      logger.info "500 Error with: '#{params[:a]}'"
     end
-    render :action => "not_found"
+    render :action => "internal_error"
   end
   
 end
