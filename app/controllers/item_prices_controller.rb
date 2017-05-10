@@ -18,7 +18,7 @@ class ItemPricesController < ApplicationController
     respond_to do |format|
       
       if @item_price.save    
-        format.html { redirect_to item_path(@item), notice: 'Changed the price of #{@item.name}.' }
+        format.html { redirect_to item_path(@item), notice: "Changed the price of #{@item.name}." }
         @item = @item_price.item
         @price_history = @item.item_prices.chronological.to_a
         format.js 

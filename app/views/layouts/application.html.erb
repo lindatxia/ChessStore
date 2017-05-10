@@ -26,16 +26,24 @@
   <body>
     
     <%= render partial: 'partials/nav' %>
+    <%= render partial: 'partials/sidebar'%>
 
-    <%= render partial: 'partials/sidebar' %>
  
     <div class="row">
       <div class="small-12 columns" id="main_content">
-        <%= render :partial => "partials/flash" %>
       </div>
     </div>
 
-    <div class="container"><%= yield %></div>
+    <div class="container">
+        <div class="col s2"> 
+        </div>
+        <div class="col s8">
+        <%= render :partial => "partials/flash" %>
+        <%= yield %>
+        </div>
+
+        
+    </div>
      
 
     <footer>
