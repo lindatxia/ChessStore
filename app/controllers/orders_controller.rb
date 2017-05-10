@@ -7,13 +7,13 @@ class OrdersController < ApplicationController
 
 	def index 
 		if current_user.role?(:customer)
-			@orders = Order.all.order(id: :desc).where(user_id: current_user.id).to_a
-			@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.to_a
+			@orders = Order.all.order(id: :desc).where(user_id: current_user.id).paginate(:page => params[:page]).per_page(10)
+			@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.paginate(:page => params[:page]).per_page(10)
 
 		
 		else 
-			@orders = Order.all.order(id: :desc).to_a
-			@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.to_a
+			@orders = Order.all.order(id: :desc).paginate(:page => params[:page]).per_page(10)
+			@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.paginate(:page => params[:page]).per_page(10)
 		
 		end
 	end
