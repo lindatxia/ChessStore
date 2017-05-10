@@ -1,7 +1,7 @@
 <div id="price_hist">
   <% unless @price_history.empty? %>
     <div class="panel clearfix">
-      <h3 class="heading">Price History</h3>
+      <h4 class="heading">Price History</h4>
       <ul class="text">
         <% @price_history.each do |change| %>
           <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />

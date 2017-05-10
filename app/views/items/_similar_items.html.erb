@@ -1,18 +1,18 @@
 <% unless @similar_items.empty? %>
   <div class="panel clearfix">
-    <h3 class="heading">Similar Items</h3>
+    <h4 class="heading">Similar Items</h4>
 
 	<div class="row">
 		<% @similar_items.each do |item| %>
 	    
 	    	<div class="col s4 m4">
-	    		<div class="card">
+	    		<div class="card lol">
 	    			<div class="card-image">
 	    				<%= image_tag('img_not_available.png', border:0)%>
 	        		</div>
 		        	<div class="card-content">
 
-		        	<h5 class="heading"> 
+		        	<h5 class="heading link text"> 
 		        		<%= link_to item.name, item_path(item) %>
 		        	</h5>
 

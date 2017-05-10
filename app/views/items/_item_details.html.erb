@@ -3,6 +3,9 @@
     <div id="preview">
      <%= image_tag 'img_not_available.png' %>
     </div>
+
+
+
   </div>
 
   <div class="col s5 offset-s1">
@@ -17,20 +20,33 @@
      </p>
 
      <% if logged_in?%>
-<p class="link text">
-    <%= link_to("Add to Cart", add_to_cart_path(@item.id), class: 'button tiny radius') %>
-</p>
+        <p class="link text">
+          <%= link_to("Add to Cart", add_to_cart_path(@item.id), class: 'button tiny radius') %>
+          &nbsp;&nbsp; | &nbsp;&nbsp;
+          <% if current_user.role == "manager" || current_user.role == "admin" %> 
 
-<% else %> 
-<p class="link text">
-    <%= link_to("Add to Cart", login_path, class: 'button tiny radius') %>
-</p>
+       <%= link_to(eval("edit_item_path(@item)"), class: 'button radius') do %>
+        &nbsp;<%= "Edit Item" %>
+    <% end %>
+    &nbsp;&nbsp; | &nbsp;&nbsp;
+    
+    <%= link_to(eval("item_path(@item)"), method: 'delete', data: {confirm: "Are you sure you want to permanently delete @item.name?"}, class: 'button radius alert') do %>
+        &nbsp;<%= "Delete Item" %>
+    <% end %>
 
-<% end %>
 
-  </div>
+          <% end %>
 
-</div>
+        </p>
+
+      <% else %> 
+        <p class="link text">
+          <%= link_to("Add to Cart", login_path, class: 'button tiny radius') %>
+        </p>
+
+      <% end %>
+
+     
 
 <% if logged_in? && current_user.role != "customer" %> 
 <p class="text">
@@ -61,9 +77,14 @@
 
 <% if logged_in? && current_user.role != "customer" %> 
 <p class="text">
-  Active<: <%= @item.active ? 'Yes' : 'No' %>
+  Active: <%= @item.active ? 'Yes' : 'No' %>
 </p>
 <% end %> 
+
+  </div>
+
+</div>
+
 
 
 
