@@ -1,19 +1,15 @@
 Rails.application.routes.draw do
   
   # Routes for main resources
-  resources :items do 
-    get :autocomplete_item_name, :on => :collection
-  end 
+  resources :items
   resources :purchases
   resources :item_prices
 
   # Added for Phase 5
+  resources :orders
   resources :users
   resources :sessions
-  resources :orders
   resources :schools
-
-  # get 'autocomplete_item' => 'items#autocomplete_item_name'
   
   # Semi-static page routes
   get 'home' => 'home#home', as: :home

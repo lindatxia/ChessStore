@@ -20,9 +20,13 @@
   <b>Inventory Level</b>: <%= @item.inventory_level.nil? ? 'N/A' : @item.inventory_level %>
 </p>
 
-<p class="text">
-  <b>Reorder Level</b>: <%= @item.reorder_level.nil? ? 'N/A' : @item.reorder_level %>
-</p>
+<% unless current_user.role == "shipper" %>
+
+  <p class="text">
+    <b>Reorder Level</b>: <%= @item.reorder_level.nil? ? 'N/A' : @item.reorder_level %>
+  </p>
+
+<% end %>
 
 <% end%> 
 

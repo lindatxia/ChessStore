@@ -23,7 +23,6 @@
 
 					<br/>
 
-
 					<p class="text">
 						<!-- For each order item in order... --> 
 						<% o.order_items.each do |oi| %> 
@@ -38,8 +37,12 @@
 
 						<br/>
 
-						Order Placed: <%= o.date.strftime("%m/%d/%y") %>
-					</p>
+						Order Placed: <%= o.date.strftime("%m/%d/%y") %> <br/>
+					
+
+					 <%= link_to 'Cancel Order', order_path(o), method: :delete %>
+
+					 </p>
 
 				</div>
 

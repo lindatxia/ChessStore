@@ -38,7 +38,9 @@
 
 						
 						Grand Total: <%= number_to_currency(o.grand_total) %> <br/>
-						Order Placed: <%= o.date.strftime("%m/%d/%y") %>
+						Order Placed: <%= o.date.strftime("%m/%d/%y") %> <br/>
+
+						<%= link_to 'Cancel Order', order_path(o), method: :delete %>
 					</p>
 
 				</div>
