@@ -2,6 +2,18 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Purchase</legend>
 
+    <% if @purchase.errors.any? %>
+    <div id="error_explanation">
+      <h5 class="heading"><%= pluralize(@purchase.errors.count, "error") %> prohibited this purchase from being saved:</h5>
+
+      <ul>
+      <% @purchase.errors.full_messages.each do |msg| %>
+        <p class="text">- <%= msg %></p>
+      <% end %>
+      <br/>
+      </ul>
+    </div>
+
     <%= f.input :item_id, collection: Item.active.to_a, include_blank: true, input_html: {class: "avg"} %>
   
     <%= f.input :quantity, input_html: {class: "avg"} %>

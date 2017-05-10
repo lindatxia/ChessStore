@@ -22,9 +22,24 @@
 							
 
 							<%= simple_form_for @item_price do |f| %>
+
+									<% if @item_price.errors.any? %>
+									    <div id="error_explanation">
+									      <h5 class="heading"><%= pluralize(@item_price.errors.count, "error") %> prohibited this item price from being saved:</h5>
+
+									      <ul>
+									      <% @item_price.errors.full_messages.each do |msg| %>
+									        <p class="text">- <%= msg %></p>
+									      <% end %>
+									      <br/>
+									      </ul>
+									    </div>
+  									<% end %>
+
   								<%= f.input :item_id, as: :select, :collection => @items, :prompt => true, class: 'dropdown-content' %>
   								<%= f.input :price, label: "Item Price", input_html: {class: "avg"} %>
   								<%= f.input :category, as: :select, :collection => ItemPrice::CATEGORIES, :prompt => true, class: 'dropdown-content'%>
+  								
   								<div class="form-actions">
 								    <%= f.submit nil, class: 'button tiny radius' %>
 								    <%= link_to 'Cancel', home_path, class: 'button tiny radius alert' %>
@@ -51,8 +66,8 @@
 					
 						<p class="link text">
 						Order ID: <%= o.id %> <br/>
-						Customer: <%= o.user.proper_name%> <br/>
-						Date Placed: <%= o.date.strftime("%m/%d/%y") %> <br/> <br/>
+						Placed by: <%= link_to o.user.proper_name, user_path(o.user) %> <br/>
+						Date Ordered: <%= o.date.strftime("%m/%d/%y") %> <br/> <br/>
 						</p>
 				
 				

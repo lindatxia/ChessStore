@@ -1,6 +1,18 @@
 <div id="item_price_form">
 	<%= simple_form_for @item_price, html: { :class => 'form-horizontal' }, remote: true do |f| %>
 
+		<% if @item_price.errors.any? %>
+			<div id="error_explanation">
+				<h5 class="heading"><%= pluralize(@item_price.errors.count, "error") %> prohibited this item price from being saved:</h5>
+				<ul>
+				<% @item_price.errors.full_messages.each do |msg| %>
+					<p class="text">- <%= msg %></p>
+				<% end %>
+									      <br/>
+				</ul>
+			</div>
+  		<% end %>
+
 		<%= f.input :item_id, as: :hidden, input_html: { value: params[:item_id] } %>
 		<%= f.input :price, label: "Item Price", input_html: {class: "avg"} %>
 		

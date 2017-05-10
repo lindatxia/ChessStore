@@ -1,9 +1,23 @@
 <%= simple_form_for @item_price, html: { class: 'form-horizontal', multipart: true } do |f| %>
   <fieldset>
-    <legend><%= controller.action_name.capitalize %> Price</legend>
+    <legend><h4 class="heading"> Create a new item price </h4></legend>
+
+    <% if @item_price.errors.any? %>
+			<div id="error_explanation">
+				<h5 class="heading"><%= pluralize(@item_price.errors.count, "error") %> prohibited this item price from being saved:</h5>
+				<ul>
+				<% @item_price.errors.full_messages.each do |msg| %>
+					<p class="text">- <%= msg %></p>
+				<% end %>
+									      <br/>
+				</ul>
+			</div>
+  		<% end %>
 
     <%= f.input :item_id, collection: Item.active.to_a, include_blank: true, input_html: {class: "avg"} %>
     <%= f.input :price, label: 'New Price', input_html: {class: "avg"} %>
+
+    <%= f.input :category, as: :select, :collection => ItemPrice::CATEGORIES, :prompt => true, class: 'dropdown-content'%>
 
 
     <div class="form-actions">

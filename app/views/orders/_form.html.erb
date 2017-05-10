@@ -3,6 +3,21 @@
   
     <legend><%= controller.action_name.capitalize %> Order </legend>
 
+    <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h5 class="heading"><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h5>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <p class="text">- <%= msg %></p>
+      <% end %>
+      <br/>
+      </ul>
+    </div>
+
+  <% end %>
+
+
 
     <%= f.input :school_id, as: :select, :collection => School::SCHOOL_LIST, :prompt => true, class: 'dropdown-content' %>
 
