@@ -15,6 +15,8 @@ class HomeController < ApplicationController
 			@revenue = Array.new
 			@total_earned = 0
 
+			@customers = User.all.alphabetical.customers.limit(5)
+
 			# For each of the last seven days...
 			(5.days.ago.to_date..Date.current).each do |i| 
 				@all_orders_on_this_date = Order.all.where(date: i)
@@ -41,9 +43,6 @@ class HomeController < ApplicationController
 				@revenue << @earned
 
 			end
-
-
-
 
 
 			@items.map do |i| 
