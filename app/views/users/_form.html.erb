@@ -53,8 +53,15 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
- 
-  <%= f.input :role, :as => :hidden, :input_html => { :value => 'customer' } %>
+  <% if logged_in? && current_user.role == "admin" %> 
+    <%= f.input :role, as: :select, :collection => User::ROLES, :prompt => true, class: 'dropdown-content'%>
+
+  <% else %> 
+
+    <%= f.input :role, :as => :hidden, :input_html => { :value => 'customer' } %>
+
+  <% end %> 
+  
 
 
   <div class="field"> 
