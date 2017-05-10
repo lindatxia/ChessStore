@@ -36,6 +36,13 @@
 
 				<% if current_user.role == "admin" || current_user.role == "manager" %>
 
+					<li><%= link_to orders_path do %> 
+					<i class="small material-icons prefix left">card_membership</i> All Orders&nbsp;&nbsp; 
+						<% end %>
+
+					</li>
+
+
 					<li><%= link_to schools_path do %> 
 					<i class="small material-icons prefix left">location_city</i> All Schools&nbsp;&nbsp; 
 						<% end %>
