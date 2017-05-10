@@ -58,7 +58,12 @@
     <% end %>
 
     <p class="text">
-      Subtotal: <%= number_to_currency(@cart_subtotal) %> 
+      Subtotal: <%= number_to_currency(@cart_subtotal) %> <br/>
+      Shipping: <%= number_to_currency(@shipping) %> <br/>
+      Grand total: <%= number_to_currency(@cart_grandtotal) %>
+
+      <br/>
+
 
       <br/>
 

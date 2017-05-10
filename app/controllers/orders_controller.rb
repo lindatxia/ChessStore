@@ -7,12 +7,14 @@ class OrdersController < ApplicationController
 
 	def index 
 		if current_user.role?(:customer)
-			@orders = current_user.orders.chronological.to_a
+			@orders = Order.all.order(id: :desc).where(user_id: current_user.id).to_a
 			@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.to_a
+
 		
 		else 
-			@orders = Order.chronological.to_a
-			@open_orders = []
+			@orders = Order.all.chronological.to_a
+			@open_orders = Order.not_shipped.where(user_id: current_user.id).chronological.to_a
+		
 		end
 	end
 
@@ -50,9 +52,12 @@ class OrdersController < ApplicationController
 		@subtotal = calculate_cart_items_cost
 		@order.grand_total = calculate_cart_shipping + @subtotal
 
+
 		if @order.save!
 			# Pay for the order
 			@order.pay
+
+			# Save each item in the cart 
 			save_each_item_in_cart(@order)
 			clear_cart
 			return redirect_to order_path(@order), notice: "Successfully created order" 

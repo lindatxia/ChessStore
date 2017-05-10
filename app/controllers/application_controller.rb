@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   include ChessStoreHelpers::Cart
+  include ChessStoreHelpers::Shipping
 
   protect_from_forgery with: :exception
 
@@ -17,6 +18,8 @@ class ApplicationController < ActionController::Base
     unless session[:cart].nil?
       @cart = get_list_of_items_in_cart
       @cart_subtotal = calculate_cart_items_cost
+      @shipping = calculate_cart_shipping
+      @cart_grandtotal = @shipping + @cart_subtotal
     end
   end
 
