@@ -3,10 +3,23 @@
     <div class="panel clearfix">
       <h4 class="heading">Price History</h4>
       <ul class="text">
+        Wholesale <br/>
         <% @price_history.each do |change| %>
           <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />
         <% end %>
       </ul>
+
+      <% if current_user.role == "admin" || current_user.role == "manager" %> 
+
+      <ul class="text">
+        Manufacturer <br/>
+        <% @price_history.each do |change| %>
+          <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />
+        <% end %>
+      </ul>
+      <% end%>
+
+
 
       <div id="this_item_price_<%=@item.id%>">
           <button class="waves-effect waves-light btn acc">
