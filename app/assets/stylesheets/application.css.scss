@@ -358,3 +358,15 @@ canvas#myChart{
   height: 300px;
   width: auto;
 }
+
+#preview img {
+  width: 400px;
+  height: auto;
+  float: left;
+}
+
+#price {
+  font-size: 25px;
+  font-family: 'Source Sans Pro';
+  font-weight: 100;
+}
