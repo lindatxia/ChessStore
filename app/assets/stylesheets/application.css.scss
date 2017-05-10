@@ -317,7 +317,7 @@ canvas#myChart{
   display: inline;
 }
 
-.card-panel teal {
+.card-panel.teal {
   display: inline !important;
   text-align: center !important;
 }
@@ -329,3 +329,8 @@ canvas#myChart{
   letter-spacing: 0.3px;
   color: #696969;
 }
+
+body {
+  background-color: #fafafa;
+}
+
