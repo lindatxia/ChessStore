@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
 	before_action :set_order, only: [:show, :destroy]
 	before_action :check_login, only: [:new, :create]
-	authorize_resource
+	
 
 	def index 
 

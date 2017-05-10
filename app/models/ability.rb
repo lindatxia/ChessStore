@@ -62,7 +62,7 @@ class Ability
 			end
 
 			# 2. Can read information related to orders that need to be shipped 
-			can :manage, Order
+			can :read, Order
 
 			# 3. Can read information about items
 			can :read, Item
